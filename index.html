@@ -9,11 +9,11 @@
 <style>
 :root {
   --ink: #0e0e0e;
-  --paper: #f5f2ed;
-  --cream: #ede9e0;
-  --gold: #b8996a;
-  --muted: #888078;
-  --light: #d4cfc6;
+  --paper: #ffffff;
+  --cream: #f4f4f4;
+  --gold: #9a7a45;
+  --muted: #333333;
+  --light: #cccccc;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -89,7 +89,7 @@ nav {
   background: var(--gold); margin-bottom: 32px;
 }
 .hero-desc {
-  font-size: 11pt; color: #444;
+  font-size: 11pt; color: #111111;
   max-width: 560px; line-height: 2.0;
   margin-bottom: 48px;
 }
@@ -127,9 +127,9 @@ section { padding: 100px 40px; }
 #intro .section-title { color: var(--paper); }
 .intro-text {
   font-size: 12pt; line-height: 2.2;
-  color: #c8c4bc; max-width: 700px;
+  color: #d0ccc4; max-width: 700px;
 }
-.intro-text strong { color: var(--paper); font-weight: 400; }
+.intro-text strong { color: #ffffff; font-weight: 400; }
 
 /* ── STRUCTURE ── */
 #structure { background: var(--cream); }
@@ -230,7 +230,7 @@ section { padding: 100px 40px; }
   margin-bottom: 16px;
 }
 .summary-text {
-  font-size: 10pt; color: #444;
+  font-size: 10pt; color: #111111;
   line-height: 2.0;
 }
 .summary-lang-toggle {
@@ -252,7 +252,7 @@ section { padding: 100px 40px; }
 .lang-content { display: none; margin-top: 14px; }
 .lang-content.show {
   display: block;
-  font-size: 10pt; color: #555; line-height: 2.0;
+  font-size: 10pt; color: #222222; line-height: 2.0;
   padding-top: 14px; border-top: 1px dashed var(--light);
 }
 
@@ -360,9 +360,14 @@ footer {
 </head>
 <body>
 
+<!-- WORK IN PROGRESS BANNER -->
+<div style="background:#1a1a1a;color:#f0ede8;text-align:center;padding:10px 20px;font-family:'Noto Serif KR',serif;font-size:9pt;letter-spacing:0.15em;position:relative;z-index:200;">
+  🚧 &nbsp; 현재 업데이트 작업 중입니다 &nbsp;·&nbsp; Work in Progress &nbsp; 🚧
+</div>
+
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">YoungsBooks</a>
+  <a class="nav-logo" href="#" style="display:flex;align-items:center;gap:10px;"><img src="logo.png" alt="YoungsBooks 로고" style="height:36px;width:36px;object-fit:contain;border-radius:50%;"> YoungsBooks</a>
   <div class="nav-links">
     <a href="#intro">책 소개</a>
     <a href="#structure">목차</a>
@@ -375,33 +380,27 @@ footer {
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg-text">새벽</div>
-  <div class="hero-inner">
-    <div class="hero-label">YoungsBooks · 2025 · 허영 지음</div>
-    <h1 class="hero-title">새벽,<br>그 새로운 개벽을 위하여</h1>
-    <div class="hero-subtitle">Homo Hanullim Significans</div>
-    <div class="hero-divider"></div>
-    <p class="hero-desc">
-      AGI 시대, 인간은 무엇인가.<br>
-      동학의 뿌리에서 길어올린 새로운 문명의 설계도.<br>
-      씨앗에서 뿌리로, 뿌리에서 꽃망울로 —<br>
-      아직 피지 않은 가능성의 철학.
-    </p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span>저자</span>
-        <strong>허 영</strong>
-      </div>
-      <div class="hero-meta-item">
-        <span>출판</span>
-        <strong>YoungsBooks</strong>
-      </div>
-      <div class="hero-meta-item">
-        <span>분량</span>
-        <strong>288페이지</strong>
-      </div>
-      <div class="hero-meta-item">
-        <span>라이선스</span>
-        <strong>비상업적 카피레프트</strong>
+  <div style="max-width:1000px;margin:0 auto;display:flex;gap:72px;align-items:center;position:relative;flex-wrap:wrap;">
+    <div style="flex-shrink:0;display:flex;gap:14px;align-items:flex-start;">
+      <img src="cover_front.png" alt="앞표지" style="width:200px;box-shadow:0 24px 64px rgba(0,0,0,0.28);transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='translateY(0)'">
+      <img src="cover_back.png" alt="뒤표지" style="width:138px;box-shadow:0 16px 48px rgba(0,0,0,0.2);margin-top:28px;opacity:0.88;transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+    </div>
+    <div class="hero-inner" style="max-width:520px;">
+      <div class="hero-label">YoungsBooks · 2025 · 허영 지음</div>
+      <h1 class="hero-title">새벽,<br>그 새로운 개벽을 위하여</h1>
+      <div class="hero-subtitle">Homo Hanullim Significans</div>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        AGI 시대, 인간은 무엇인가.<br>
+        동학의 뿌리에서 길어올린 새로운 문명의 설계도.<br>
+        씨앗에서 뿌리로, 뿌리에서 꽃망울로 —<br>
+        아직 피지 않은 가능성의 철학.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span>저자</span><strong>허 영</strong></div>
+        <div class="hero-meta-item"><span>출판</span><strong>YoungsBooks</strong></div>
+        <div class="hero-meta-item"><span>분량</span><strong>288페이지</strong></div>
+        <div class="hero-meta-item"><span>라이선스</span><strong>비상업적 카피레프트</strong></div>
       </div>
     </div>
   </div>
@@ -674,7 +673,7 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">YoungsBooks</div>
+  <div class="footer-logo" style="display:flex;align-items:center;gap:10px;"><img src="logo.png" alt="YoungsBooks 로고" style="height:32px;width:32px;object-fit:contain;border-radius:50%;"> YoungsBooks</div>
   <div class="footer-copy">© 2025 허영 · hololord@naver.com · 비상업적 카피레프트</div>
 </footer>
 
