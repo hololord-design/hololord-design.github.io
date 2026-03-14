@@ -21,16 +21,16 @@ nav {
 .nav-logo {
   display:flex; align-items:center; gap:12px; text-decoration:none;
 }
-.nav-logo img { height:58px; width:58px; object-fit:contain; border-radius:50%; }
-.nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+.nav-logo img { height:72px; width:72px; object-fit:contain; border-radius:50%; }
+.nav-logo-text { display:flex; flex-direction:column; line-height:1.2; justify-content:center; }
 .nav-logo-en {
   font-family:'Cormorant Garamond',serif;
-  font-size:13pt; font-weight:600; letter-spacing:0.2em;
-  color:#888; text-transform:uppercase;
+  font-size:9pt; font-weight:400; letter-spacing:0.25em;
+  color:#aaa; text-transform:uppercase;
 }
 .nav-logo-kr {
   font-family:'Noto Serif KR',serif;
-  font-size:17pt; font-weight:600; letter-spacing:0.08em;
+  font-size:22pt; font-weight:600; letter-spacing:0.06em;
   color:#0a0a0a;
 }
 .nav-links { display:flex; gap:24px; }
@@ -304,13 +304,12 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
 
   <!-- 펼치기 버튼 -->
   <div style="max-width:860px;margin:0 auto;padding:0 60px;">
-    <button onclick="toggleDedication()"
+    <div onclick="toggleDedication()"
       id="ded-btn"
-      style="display:flex;align-items:center;gap:8px;margin:20px 0;background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:11pt;font-style:italic;color:#888;padding:0;transition:color 0.2s;"
-      onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='#888'">
-      <span id="ded-arrow" style="transition:transform 0.3s;">▾</span>
-      <span id="ded-label">편지 전체 읽기</span>
-    </button>
+      style="display:inline-flex;align-items:center;gap:10px;margin:20px 0;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:12pt;font-style:italic;color:#666;padding:12px 0;border-bottom:1px solid #ddd;user-select:none;">
+      <span id="ded-arrow" style="font-size:14pt;transition:transform 0.3s;display:inline-block;">▾</span>
+      <span id="ded-label">편지 전체 읽기 →</span>
+    </div>
   </div>
 
   <!-- 접힌 본문 -->
