@@ -84,14 +84,8 @@ nav {
 }
 .pub-logo-wrap { margin-bottom:32px; }
 .pub-logo-wrap img { width:110px; height:110px; object-fit:contain; border-radius:50%; box-shadow:0 8px 32px rgba(0,0,0,0.1); }
-.pub-name {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(44pt,9vw,80pt);
-  font-weight:600; letter-spacing:0.15em;
-  color:#0a0a0a; text-transform:uppercase;
-  line-height:1.0; margin-bottom:16px;
-}
-.pub-sub { font-family:'Cormorant Garamond',serif; font-size:14pt; font-style:italic; color:#666; margin-bottom:36px; }
+.pub-name { display:none; }
+.pub-sub { display:none; }
 .pub-divider { width:60px; height:2px; background:#0a0a0a; margin:0 auto 36px; }
 .pub-philosophy { font-size:12pt; color:#111; line-height:2.2; max-width:580px; margin:0 auto; }
 .pub-philosophy strong { font-weight:600; }
@@ -376,11 +370,14 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
 
 <!-- 1. 출판사 -->
 <section id="pub-hero">
-  <div class="pub-logo-wrap">
-    <img src="logo.png" alt="YoungsBooks 로고">
+  <!-- 로고 + 텍스트 나란히 -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:36px;flex-wrap:wrap;">
+    <img src="logo.png" alt="YoungsBooks 로고" style="width:140px;height:140px;object-fit:contain;border-radius:50%;box-shadow:0 8px 32px rgba(0,0,0,0.12);">
+    <div style="text-align:left;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:11pt;font-weight:400;letter-spacing:0.35em;color:#aaa;text-transform:uppercase;margin-bottom:6px;">YOUNGSBOOKS</div>
+      <div style="font-family:'Noto Serif KR',serif;font-size:clamp(32pt,6vw,52pt);font-weight:600;letter-spacing:0.06em;color:#0a0a0a;line-height:1.0;">영스북스</div>
+    </div>
   </div>
-  <div class="pub-name">YOUNGSBOOKS</div>
-  <div class="pub-sub">영스북스</div>
   <div class="pub-divider"></div>
   <p class="pub-philosophy">
     <strong>지식은 멈추지 않고 흘러야 한다.</strong><br><br>
