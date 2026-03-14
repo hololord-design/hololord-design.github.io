@@ -9,228 +9,256 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { background:#ffffff; color:#0a0a0a; font-family:'Noto Serif KR',serif; font-weight:300; line-height:1.9; }
+body { background:#ffffff; color:#0a0a0a !important; font-family:'Noto Serif KR',serif; font-weight:600; line-height:1.9; font-size:14px; }
 
 /* NAV */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
   background:#ffffff; border-bottom:2px solid #0a0a0a;
-  padding:12px 48px;
+  padding:10px 40px;
   display:flex; justify-content:space-between; align-items:center;
 }
-.nav-logo {
-  display:flex; align-items:center; gap:12px; text-decoration:none;
-}
-.nav-logo img { height:72px; width:72px; object-fit:contain; border-radius:50%; }
-.nav-logo-text { display:flex; flex-direction:column; line-height:1.2; justify-content:center; }
-.nav-logo-en {
-  font-family:'Cormorant Garamond',serif;
-  font-size:9pt; font-weight:400; letter-spacing:0.25em;
-  color:#aaa; text-transform:uppercase;
-}
-.nav-logo-kr {
-  font-family:'Noto Serif KR',serif;
-  font-size:22pt; font-weight:600; letter-spacing:0.06em;
-  color:#0a0a0a;
-}
+.nav-logo { display:flex; align-items:flex-end; gap:14px; text-decoration:none; }
+.nav-logo img { height:76px; width:76px; object-fit:contain; border-radius:50%; }
+.nav-logo-wrap { display:flex; flex-direction:column; line-height:1.2; justify-content:flex-end; padding-bottom:4px; }
+.nav-logo-en { font-family:'Cormorant Garamond',serif; font-size:9pt; letter-spacing:0.3em; color:#0a0a0a; text-transform:uppercase; }
+.nav-logo-kr { font-family:'Noto Serif KR',serif; font-size:20pt; font-weight:600; color:#0a0a0a; }
 .nav-links { display:flex; gap:24px; }
-.nav-links a { font-size:9pt; letter-spacing:0.18em; text-transform:uppercase; color:#444; text-decoration:none; transition:color 0.2s; }
+.nav-links a { font-size:9pt; letter-spacing:0.15em; text-transform:uppercase; color:#0a0a0a; text-decoration:none; }
 .nav-links a:hover { color:#0a0a0a; }
 
 /* WIP */
-.wip-banner { background:#0a0a0a; color:#fff; text-align:center; padding:9px 20px; font-size:9pt; letter-spacing:0.12em; }
+.wip-banner { background:#0a0a0a; color:#fff; text-align:center; padding:9px 20px; font-size:10pt; letter-spacing:0.1em; }
 
-/* ── 공지 섹션 ── */
-#notice {
-  background:#fffbf2;
-  border-bottom:2px solid #0a0a0a;
-  padding:0;
-}
-.notice-header {
-  display:flex; align-items:center; gap:14px;
-  padding:16px 48px;
-  border-bottom:1px solid #e8e0d0;
-  cursor:pointer;
-  user-select:none;
-}
-.notice-header img { width:32px; height:32px; object-fit:contain; border-radius:50%; flex-shrink:0; }
-.notice-label {
-  font-size:9pt; letter-spacing:0.25em; text-transform:uppercase;
-  color:#8a7a5a; font-family:'Cormorant Garamond',serif; font-weight:600;
-}
-.notice-toggle { margin-left:auto; font-size:11pt; color:#8a7a5a; transition:transform 0.3s; }
+/* 공지 */
+#notice { background:#ffffff; border-bottom:2px solid #0a0a0a; }
+.notice-header { display:flex; align-items:center; gap:14px; padding:14px 40px; border-bottom:1px solid #e8e0cc; cursor:pointer; }
+.notice-header img { width:30px; height:30px; object-fit:contain; border-radius:50%; flex-shrink:0; }
+.notice-label { font-size:10pt; letter-spacing:0.2em; text-transform:uppercase; color:#0a0a0a; font-family:'Cormorant Garamond',serif; font-weight:600; }
+.notice-toggle { margin-left:auto; font-size:12pt; color:#0a0a0a; transition:transform 0.3s; }
 .notice-toggle.open { transform:rotate(180deg); }
 .notice-list { display:none; }
 .notice-list.open { display:block; }
-.notice-item {
-  padding:20px 48px;
-  border-bottom:1px solid #e8e0d0;
-  display:flex; gap:24px; align-items:baseline;
-}
+.notice-item { padding:16px 40px; border-bottom:1px solid #e8e0cc; display:flex; gap:20px; align-items:baseline; }
 .notice-item:last-child { border-bottom:none; }
-.notice-date {
-  font-family:'Cormorant Garamond',serif;
-  font-size:9pt; color:#aaa; letter-spacing:0.1em;
-  flex-shrink:0; min-width:90px;
-}
-.notice-content { font-size:11pt; color:#111; line-height:1.9; }
+.notice-date { font-family:'Cormorant Garamond',serif; font-size:9pt; color:#0a0a0a; min-width:90px; flex-shrink:0; }
+.notice-content { font-size:12pt; color:#0a0a0a; line-height:1.9; }
 
-/* ── 1. PUBLISHER HERO ── */
-#pub-hero {
-  padding:160px 60px 100px;
-  background:#ffffff;
-  border-bottom:2px solid #0a0a0a;
-  text-align:center;
-}
-.pub-logo-wrap { margin-bottom:32px; }
-.pub-logo-wrap img { width:110px; height:110px; object-fit:contain; border-radius:50%; box-shadow:0 8px 32px rgba(0,0,0,0.1); }
-.pub-name { display:none; }
-.pub-sub { display:none; }
-.pub-divider { width:60px; height:2px; background:#0a0a0a; margin:0 auto 36px; }
-.pub-philosophy { font-size:12pt; color:#111; line-height:2.2; max-width:580px; margin:0 auto; }
-.pub-philosophy strong { font-weight:600; }
+/* 헌정 편지 */
+#dedication { background:#ffffff; border-bottom:2px solid #0a0a0a; padding:80px 40px 0; }
+.ded-inner { max-width:860px; margin:0 auto; }
+.ded-label { font-family:'Cormorant Garamond',serif; font-size:9pt; letter-spacing:0.35em; text-transform:uppercase; color:#1a3a6a; margin-bottom:24px; }
+.ded-recipients { font-size:12pt; color:#0a0a0a; line-height:2.2; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid #ddd; }
+.ded-preview { font-size:12pt; color:#0a0a0a; line-height:2.1; margin-bottom:16px; }
+.ded-btn { display:inline-flex; align-items:center; gap:10px; margin:16px 0 0; cursor:pointer; font-family:'Cormorant Garamond',serif; font-size:13pt; font-style:italic; color:#0a0a0a; padding:12px 0; border-bottom:2px solid #0a0a0a; user-select:none; }
+.ded-btn:hover { color:#0a0a0a; }
+#ded-body { display:none; padding:40px 0 60px; }
+.speech-bubble { border:2px solid #0a0a0a; padding:36px 40px; background:#ffffff; position:relative; margin-left:120px; }
+.speech-bubble::before { content:''; position:absolute; left:-22px; top:28px; width:0; height:0; border-top:10px solid transparent; border-bottom:10px solid transparent; border-right:22px solid #0a0a0a; }
+.speech-bubble::after { content:''; position:absolute; left:-17px; top:30px; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-right:17px solid #ffffff; }
+.fox-wrap { position:absolute; left:0; top:0; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.fox-wrap img { width:90px; height:90px; object-fit:contain; border-radius:50%; box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.fox-name { font-family:'Cormorant Garamond',serif; font-size:9pt; font-style:italic; color:#0a0a0a; text-align:center; line-height:1.6; }
+.ded-text { font-size:12pt; color:#0a0a0a; line-height:2.3; margin-bottom:22px; }
+.ded-quote { font-size:13pt; color:#0a0a0a; line-height:2.0; margin-bottom:22px; padding-left:20px; border-left:3px solid #b8996a; }
+.ded-box { background:#ffffff; padding:22px 26px; margin-bottom:24px; border-left:3px solid #0a0a0a; }
+.ded-box p { font-size:12pt; color:#0a0a0a; line-height:2.1; }
+.ded-closing { font-size:14pt; font-weight:600; color:#0a0a0a; line-height:1.8; margin-bottom:24px; }
+.ded-sign { text-align:right; border-top:1px solid #ddd; padding-top:18px; font-family:'Cormorant Garamond',serif; font-size:14pt; font-style:italic; color:#0a0a0a; }
 
-/* ── 2. 뒤표지 핵심 문구 히어로 ── */
-#back-cover-hero {
-  background:#0a0a0a; color:#fff;
-  padding:100px 60px;
-  border-bottom:2px solid #0a0a0a;
-}
-.bc-inner { max-width:860px; margin:0 auto; }
-.bc-question {
-  font-family:'Noto Serif KR',serif;
-  font-size:clamp(16pt,3vw,26pt);
-  font-weight:300; line-height:1.6;
-  color:#fff; margin-bottom:56px;
-  border-left:4px solid #b8996a;
-  padding-left:32px;
-}
-.bc-question strong { font-weight:600; color:#f0e8d8; }
-.bc-formula {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(14pt,2.5vw,20pt);
-  font-style:italic; color:#b8996a;
-  margin-bottom:48px; line-height:1.8;
-}
-.bc-statement {
-  font-size:clamp(13pt,2vw,17pt);
-  color:#ccc; line-height:2.0; margin-bottom:40px;
-}
-.bc-statement strong { color:#fff; font-weight:400; }
-.bc-homo {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(20pt,4vw,32pt);
-  font-weight:600; color:#fff;
-  letter-spacing:0.08em; margin-bottom:32px;
-}
-.bc-invite {
-  font-size:13pt; color:#999;
-  border-top:1px solid #333; padding-top:32px;
-}
-.bc-invite strong { color:#fff; font-weight:400; }
+/* 출판사 히어로 */
+#pub-hero { padding:140px 40px 80px; background:#ffffff; border-bottom:2px solid #0a0a0a; text-align:center; }
+.pub-hero-inner { max-width:860px; margin:0 auto; }
+.pub-logo-block { display:flex; align-items:center; justify-content:center; gap:28px; margin-bottom:36px; flex-wrap:wrap; }
+.pub-logo-block img { width:130px; height:130px; object-fit:contain; border-radius:50%; box-shadow:0 8px 32px rgba(0,0,0,0.12); }
+.pub-name-block { text-align:left; }
+.pub-name-en { font-family:'Cormorant Garamond',serif; font-size:10pt; letter-spacing:0.35em; color:#0a0a0a; text-transform:uppercase; margin-bottom:4px; }
+.pub-name-kr { font-family:'Noto Serif KR',serif; font-size:clamp(28pt,6vw,48pt); font-weight:600; color:#0a0a0a; line-height:1.0; }
+.pub-divider { width:60px; height:2px; background:#0a0a0a; margin:0 auto 32px; }
+.pub-philosophy { font-size:13pt; color:#0a0a0a; line-height:2.3; max-width:580px; margin:0 auto; }
 
-/* ── 3. 앞표지 문구 + 표지 ── */
-#featured {
-  padding:100px 60px;
-  background:#f8f8f8;
-  border-bottom:2px solid #0a0a0a;
-}
-.featured-inner { max-width:960px; margin:0 auto; display:flex; gap:80px; align-items:center; flex-wrap:wrap; }
+/* 감동/한울림 철학 */
+#philosophy-flow { background:#ffffff; padding:100px 40px; border-bottom:2px solid #0a0a0a; }
+.phi-inner { max-width:720px; margin:0 auto; }
+.phi-section-label { font-family:'Cormorant Garamond',serif; font-size:9pt; letter-spacing:0.35em; text-transform:uppercase; color:#0a0a0a; margin-bottom:44px; }
+.stallman-box { padding:22px 30px; border-left:3px solid #bbb; margin-bottom:44px; background:#fff; }
+.stallman-label { font-size:9pt; letter-spacing:0.2em; text-transform:uppercase; color:#0a0a0a; margin-bottom:8px; font-family:'Cormorant Garamond',serif; }
+.stallman-quote { font-family:'Cormorant Garamond',serif; font-size:14pt; font-style:italic; color:#0a0a0a; line-height:1.9; }
+.phi-lead { font-size:13pt; color:#0a0a0a; line-height:2.3; margin-bottom:20px; }
+.phi-headline { font-family:'Cormorant Garamond',serif; font-size:clamp(18pt,4vw,26pt); font-weight:600; color:#0a0a0a; line-height:1.5; margin-bottom:36px; }
+.phi-body { font-size:12pt; color:#0a0a0a; line-height:2.4; margin-bottom:36px; }
+.phi-closing { border-top:2px solid #0a0a0a; padding-top:32px; margin-bottom:32px; }
+.phi-closing-italic { font-family:'Cormorant Garamond',serif; font-size:15pt; font-style:italic; color:#0a0a0a; line-height:2.0; margin-bottom:10px; }
+.phi-closing-strong { font-size:13pt; color:#0a0a0a; font-weight:600; }
+.phi-declaration { padding:26px 30px; border:1px solid #ccc; background:#fff; }
+.phi-declaration p { font-family:'Cormorant Garamond',serif; font-size:13pt; font-style:italic; color:#0a0a0a; line-height:2.2; margin:0; }
+
+/* 다운로드 슬라이더 */
+#download { background:#0a0a0a; border-bottom:2px solid #222; }
+.dl-header { display:flex; align-items:center; justify-content:space-between; padding:22px 40px; border-bottom:1px solid #1a1a1a; cursor:pointer; }
+.dl-header-left { display:flex; align-items:center; gap:16px; }
+.dl-header-left img { width:34px; height:34px; border-radius:50%; opacity:0.85; }
+.dl-header-label { font-family:'Cormorant Garamond',serif; font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#1a3a6a; margin-bottom:3px; }
+.dl-header-title { font-family:'Cormorant Garamond',serif; font-size:15pt; color:#fff; font-weight:600; }
+.dl-header-right { display:flex; align-items:center; gap:14px; }
+.dl-count-mini { font-family:'Cormorant Garamond',serif; font-size:14pt; color:#1a3a6a; }
+.dl-arrow { font-size:18pt; color:#0a0a0a; transition:transform 0.3s; }
+.dl-arrow.open { transform:rotate(180deg); }
+#dl-panel { display:none; }
+.dl-nav { display:flex; align-items:center; padding:14px 40px 0; gap:10px; }
+.dl-nav button { background:none; border:1px solid #333; color:#0a0a0a; width:34px; height:34px; cursor:pointer; font-size:13pt; transition:all 0.2s; }
+.dl-nav button:hover { border-color:#fff; color:#fff; }
+.slide-dots-wrap { display:flex; gap:7px; }
+.slide-dot { width:7px; height:7px; border-radius:50%; background:#333; cursor:pointer; transition:background 0.2s; }
+.slide-dot.active { background:#b8996a; }
+.dl-slide-label { font-size:9pt; color:#0a0a0a; letter-spacing:0.12em; margin-left:8px; }
+.slides-outer { overflow:hidden; padding:22px 40px 40px; }
+.slides-wrap { display:flex; transition:transform 0.4s ease; gap:22px; }
+.slide-card { min-width:calc(66.666% - 11px); background:#111; border:1px solid #222; padding:32px 36px; flex-shrink:0; }
+.slide-card-label { font-family:'Cormorant Garamond',serif; font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#1a3a6a; margin-bottom:18px; }
+/* 엔드리스북 슬라이드 */
+.endless-title { font-family:'Cormorant Garamond',serif; font-size:18pt; font-style:italic; color:#fff; line-height:1.6; margin-bottom:24px; }
+.endless-item { display:flex; gap:14px; align-items:flex-start; margin-bottom:13px; }
+.endless-star { color:#1a3a6a; font-size:11pt; flex-shrink:0; margin-top:2px; }
+.endless-text { font-size:12pt; color:#ffffff; line-height:1.8; }
+.endless-mailto { display:inline-block; margin-top:20px; padding:11px 26px; border:1px solid #b8996a; color:#1a3a6a; text-decoration:none; font-size:9pt; letter-spacing:0.15em; transition:all 0.2s; }
+.endless-mailto:hover { background:#b8996a; color:#0a0a0a; }
+/* 수정이력 슬라이드 */
+.changelog-item { padding:11px 0; border-bottom:1px solid #1a1a1a; display:flex; gap:12px; align-items:baseline; }
+.changelog-date { font-size:8pt; color:#0a0a0a; font-family:'Cormorant Garamond',serif; min-width:78px; flex-shrink:0; }
+.changelog-type { font-size:8pt; padding:2px 8px; letter-spacing:0.08em; flex-shrink:0; }
+.changelog-desc { font-size:11pt; color:#0a0a0a; line-height:1.7; }
+
+/* 대표작 */
+#featured { padding:100px 40px; background:#ffffff; border-bottom:2px solid #0a0a0a; }
+.featured-inner { max-width:960px; margin:0 auto; display:flex; gap:72px; align-items:center; flex-wrap:wrap; }
 .featured-text { flex:1; min-width:280px; }
-.feat-homo { font-family:'Cormorant Garamond',serif; font-size:10pt; letter-spacing:0.35em; text-transform:uppercase; color:#b8996a; margin-bottom:16px; }
-.feat-title { font-size:clamp(24pt,5vw,42pt); font-weight:300; line-height:1.25; color:#0a0a0a; margin-bottom:10px; }
-.feat-subtitle { font-family:'Cormorant Garamond',serif; font-size:14pt; font-style:italic; color:#555; margin-bottom:32px; }
-.feat-divider { width:40px; height:2px; background:#0a0a0a; margin-bottom:28px; }
-.feat-bullets { list-style:none; margin-bottom:32px; }
-.feat-bullets li {
-  font-size:12pt; color:#111; padding:8px 0;
-  border-bottom:1px solid #ddd; line-height:1.7;
-  padding-left:20px; position:relative;
-}
-.feat-bullets li::before { content:'—'; position:absolute; left:0; color:#b8996a; }
+.feat-label { font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#0a0a0a; margin-bottom:14px; font-family:'Cormorant Garamond',serif; }
+.feat-title { font-size:clamp(22pt,4.5vw,38pt); font-weight:600; line-height:1.3; color:#0a0a0a; margin-bottom:10px; }
+.feat-subtitle { font-family:'Cormorant Garamond',serif; font-size:14pt; font-style:italic; color:#0a0a0a; margin-bottom:28px; }
+.feat-divider { width:40px; height:2px; background:#0a0a0a; margin-bottom:24px; }
+.feat-bullets { list-style:none; margin-bottom:28px; }
+.feat-bullets li { font-size:12pt; color:#0a0a0a; padding:8px 0 8px 20px; border-bottom:1px solid #ccc; position:relative; }
+.feat-bullets li::before { content:'—'; position:absolute; left:0; color:#1a3a6a; }
 .feat-meta { display:flex; gap:28px; flex-wrap:wrap; }
-.meta-item span { display:block; font-size:9pt; letter-spacing:0.2em; text-transform:uppercase; color:#888; margin-bottom:3px; font-family:'Cormorant Garamond',serif; }
-.meta-item strong { font-size:11pt; font-weight:400; color:#0a0a0a; }
+.meta-item span { display:block; font-size:9pt; letter-spacing:0.2em; text-transform:uppercase; color:#0a0a0a; margin-bottom:3px; font-family:'Cormorant Garamond',serif; }
+.meta-item strong { font-size:11pt; font-weight:600; color:#0a0a0a; }
 .featured-covers { flex-shrink:0; display:flex; gap:14px; align-items:flex-start; }
-.featured-covers img { box-shadow:0 16px 48px rgba(0,0,0,0.18); transition:transform 0.3s; }
+.featured-covers img { box-shadow:0 16px 48px rgba(0,0,0,0.2); transition:transform 0.3s; }
 .featured-covers img:hover { transform:translateY(-5px); }
 .cover-front { width:200px; }
-.cover-back  { width:200px; opacity:1; }
+.cover-back { width:200px; }
 
-/* ── 4. 서재 ── */
-#books { padding:100px 60px; background:#ffffff; border-bottom:2px solid #0a0a0a; }
+/* 서재 */
+#books { padding:100px 40px; background:#ffffff; border-bottom:2px solid #0a0a0a; }
 .books-inner { max-width:960px; margin:0 auto; }
-.section-label { font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin-bottom:12px; font-family:'Cormorant Garamond',serif; }
-.section-title { font-size:26pt; font-weight:400; color:#0a0a0a; margin-bottom:52px; }
-.books-grid { display:flex; flex-direction:column; gap:52px; }
-.book-card { display:flex; gap:44px; align-items:flex-start; padding-bottom:52px; border-bottom:1px solid #ddd; }
+.section-label { font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#0a0a0a; margin-bottom:10px; font-family:'Cormorant Garamond',serif; }
+.section-title { font-size:24pt; font-weight:600; color:#0a0a0a; margin-bottom:48px; }
+.books-grid { display:flex; flex-direction:column; gap:48px; }
+.book-card { display:flex; gap:40px; align-items:flex-start; padding-bottom:48px; border-bottom:1px solid #ccc; }
 .book-card:last-child { border-bottom:none; padding-bottom:0; }
-.book-cover-placeholder { width:150px; height:210px; background:#eeeeee; border:2px dashed #ccc; display:flex; align-items:center; justify-content:center; font-size:11pt; color:#888; text-align:center; line-height:1.8; }
+.book-cover-placeholder { width:150px; height:210px; background:#eeeeee; border:2px dashed #ccc; display:flex; align-items:center; justify-content:center; font-size:11pt; color:#0a0a0a; text-align:center; line-height:1.8; }
 .book-status { display:inline-block; padding:4px 12px; margin-bottom:12px; font-size:9pt; letter-spacing:0.12em; text-transform:uppercase; border:2px solid currentColor; }
 .status-out { color:#0a0a0a; border-color:#0a0a0a; }
-.status-soon, .status-review { color:#999; border-color:#bbb; }
-.book-title { font-size:17pt; font-weight:400; margin-bottom:6px; line-height:1.4; color:#0a0a0a; }
-.book-author { font-family:'Cormorant Garamond',serif; font-size:12pt; font-style:italic; color:#666; margin-bottom:16px; }
-.book-desc { font-size:11pt; color:#222; line-height:2.0; max-width:500px; margin-bottom:18px; }
+.status-soon, .status-review { color:#0a0a0a; border-color:#0a0a0a; }
+.book-title { font-size:17pt; font-weight:600; margin-bottom:6px; color:#0a0a0a; }
+.book-author { font-family:'Cormorant Garamond',serif; font-size:12pt; font-style:italic; color:#0a0a0a; margin-bottom:14px; }
+.book-desc { font-size:11pt; color:#0a0a0a; line-height:2.0; max-width:500px; margin-bottom:16px; }
 .book-tags { display:flex; gap:8px; flex-wrap:wrap; }
-.book-tag { padding:4px 12px; background:#f2f2f2; border:1px solid #ccc; font-size:9pt; color:#555; }
+.book-tag { padding:4px 12px; background:#ffffff; border:1px solid #ccc; font-size:9pt; color:#0a0a0a; }
 
-/* ── 5. AI 요약 ── */
-#summaries { background:#f8f8f8; padding:100px 60px; border-bottom:2px solid #0a0a0a; }
+/* AI 요약 */
+#summaries { background:#ffffff; padding:100px 40px; border-bottom:2px solid #0a0a0a; }
 .sum-inner { max-width:960px; margin:0 auto; }
-.ai-tabs { display:flex; border-bottom:2px solid #0a0a0a; margin-bottom:44px; }
-.ai-tab { padding:13px 30px; font-size:9pt; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; border:none; background:none; color:#666; border-bottom:3px solid transparent; margin-bottom:-2px; transition:all 0.2s; font-family:'Noto Serif KR',serif; }
+.ai-tabs { display:flex; border-bottom:2px solid #0a0a0a; margin-bottom:40px; }
+.ai-tab { padding:12px 28px; font-size:9pt; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer; border:none; background:none; color:#0a0a0a; border-bottom:3px solid transparent; margin-bottom:-2px; transition:all 0.2s; font-family:'Noto Serif KR',serif; }
 .ai-tab.active { color:#0a0a0a; border-bottom-color:#0a0a0a; }
 .ai-panel { display:none; }
 .ai-panel.active { display:block; }
-.ai-intro { display:flex; align-items:flex-start; gap:18px; margin-bottom:32px; padding-bottom:24px; border-bottom:1px solid #ccc; }
+.ai-intro { display:flex; align-items:flex-start; gap:16px; margin-bottom:28px; padding-bottom:22px; border-bottom:1px solid #bbb; }
 .ai-badge { flex-shrink:0; width:44px; height:44px; border:2px solid #0a0a0a; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:13pt; font-weight:600; }
-.ai-name { font-size:11pt; font-weight:400; margin-bottom:3px; color:#0a0a0a; }
-.ai-desc { font-size:10pt; color:#555; line-height:1.7; }
-.summary-parts { display:flex; flex-direction:column; gap:24px; }
-.summary-part { padding:26px 30px; background:#fff; border-left:4px solid #ddd; transition:border-color 0.2s; }
+.ai-name { font-size:11pt; font-weight:600; margin-bottom:3px; color:#0a0a0a; }
+.ai-desc { font-size:10pt; color:#0a0a0a; line-height:1.7; }
+.summary-parts { display:flex; flex-direction:column; gap:22px; }
+.summary-part { padding:24px 28px; background:#fff; border-left:4px solid #ddd; transition:border-color 0.2s; }
 .summary-part:hover { border-left-color:#0a0a0a; }
-.summary-part-label { font-size:9pt; letter-spacing:0.22em; text-transform:uppercase; color:#b8996a; margin-bottom:5px; font-family:'Cormorant Garamond',serif; }
-.summary-part-title { font-size:13pt; font-weight:400; margin-bottom:12px; color:#0a0a0a; }
-.summary-text { font-size:11pt; color:#111; line-height:2.0; }
-.lang-toggle { margin-top:12px; padding-top:10px; border-top:1px solid #e0e0e0; }
-.lang-btn { background:none; border:1px solid #bbb; padding:4px 11px; font-size:9pt; letter-spacing:0.08em; cursor:pointer; margin-right:6px; margin-bottom:6px; color:#555; transition:all 0.2s; font-family:'Noto Serif KR',serif; }
+.summary-part-label { font-size:9pt; letter-spacing:0.22em; text-transform:uppercase; color:#1a3a6a; margin-bottom:5px; font-family:'Cormorant Garamond',serif; }
+.summary-part-title { font-size:13pt; font-weight:600; margin-bottom:12px; color:#0a0a0a; }
+.summary-text { font-size:11pt; color:#0a0a0a; line-height:2.0; }
+.lang-toggle { margin-top:12px; padding-top:10px; border-top:1px solid #ddd; }
+.lang-btn { background:none; border:1px solid #bbb; padding:4px 11px; font-size:9pt; cursor:pointer; margin-right:6px; margin-bottom:6px; color:#0a0a0a; transition:all 0.2s; font-family:'Noto Serif KR',serif; }
 .lang-btn:hover, .lang-btn.active { background:#0a0a0a; color:#fff; border-color:#0a0a0a; }
-.lang-content { display:none; margin-top:10px; font-size:11pt; color:#222; line-height:2.0; padding-top:10px; border-top:1px dashed #ccc; }
+.lang-content { display:none; margin-top:10px; font-size:11pt; color:#0a0a0a; line-height:2.0; padding-top:10px; border-top:1px dashed #ccc; }
 .lang-content.show { display:block; }
 
-/* ── 6. 번역 협력 ── */
-#translation { background:#ffffff; padding:100px 60px; border-bottom:2px solid #0a0a0a; }
+/* 번역 */
+#translation { background:#ffffff; padding:100px 40px; border-bottom:2px solid #0a0a0a; }
 .trans-inner { max-width:700px; }
-.trans-text { font-size:12pt; color:#111; line-height:2.2; margin-bottom:20px; }
-.trans-highlight { font-family:'Cormorant Garamond',serif; font-size:16pt; font-style:italic; color:#555; margin:32px 0; line-height:1.8; }
+.trans-text { font-size:12pt; color:#0a0a0a; line-height:2.2; margin-bottom:18px; }
+.trans-highlight { font-family:'Cormorant Garamond',serif; font-size:16pt; font-style:italic; color:#0a0a0a; margin:30px 0; line-height:1.8; }
 
-/* ── 7. 저자에게 ── */
-#author { background:#0a0a0a; color:#fff; padding:100px 60px; text-align:center; }
-.author-label { font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#666; margin-bottom:18px; font-family:'Cormorant Garamond',serif; }
-.author-heading { font-size:22pt; font-weight:300; color:#fff; margin-bottom:32px; line-height:1.5; }
-.author-quote { font-family:'Cormorant Garamond',serif; font-size:17pt; font-style:italic; color:#bbb; max-width:540px; margin:0 auto 32px; line-height:1.9; }
-.author-sub { font-size:12pt; color:#888; max-width:440px; margin:0 auto 36px; line-height:2.0; }
-.btn-white { padding:13px 34px; background:#fff; color:#0a0a0a; border:none; font-family:'Noto Serif KR',serif; font-size:9pt; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; transition:opacity 0.2s; margin:6px; }
+/* 저자 */
+#author { background:#0a0a0a; color:#fff; padding:100px 40px; text-align:center; }
+.author-label { font-size:9pt; letter-spacing:0.3em; text-transform:uppercase; color:#0a0a0a; margin-bottom:16px; font-family:'Cormorant Garamond',serif; }
+.author-heading { font-size:20pt; font-weight:600; color:#fff; margin-bottom:28px; line-height:1.5; }
+.author-quote { font-family:'Cormorant Garamond',serif; font-size:16pt; font-style:italic; color:#0a0a0a; max-width:520px; margin:0 auto 28px; line-height:1.9; }
+.author-sub { font-size:12pt; color:#0a0a0a; max-width:420px; margin:0 auto 32px; line-height:2.0; }
+.btn-white { padding:13px 32px; background:#fff; color:#0a0a0a; border:none; font-family:'Noto Serif KR',serif; font-size:9pt; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; margin:5px; transition:opacity 0.2s; }
 .btn-white:hover { opacity:0.85; }
-.btn-outline { padding:13px 34px; background:none; color:#fff; border:2px solid #444; font-family:'Noto Serif KR',serif; font-size:9pt; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; transition:all 0.2s; margin:6px; }
+.btn-outline { padding:13px 32px; background:none; color:#fff; border:2px solid #555; font-family:'Noto Serif KR',serif; font-size:9pt; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; margin:5px; transition:all 0.2s; }
 .btn-outline:hover { border-color:#fff; }
 
-/* FOOTER */
-footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; background:#fff; }
-.footer-logo { display:flex; align-items:center; gap:12px; font-family:'Cormorant Garamond',serif; font-size:17pt; letter-spacing:0.12em; color:#0a0a0a; font-weight:600; text-transform:uppercase; }
-.footer-logo img { height:34px; width:34px; object-fit:contain; border-radius:50%; }
-.footer-copy { font-size:9pt; color:#888; }
+/* 푸터 */
+footer { padding:32px 40px; border-top:2px solid #0a0a0a; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; background:#fff; }
+.footer-logo { display:flex; align-items:center; gap:10px; font-family:'Cormorant Garamond',serif; font-size:16pt; letter-spacing:0.1em; color:#0a0a0a; font-weight:600; text-transform:uppercase; }
+.footer-logo img { height:32px; width:32px; object-fit:contain; border-radius:50%; }
+.footer-copy { font-size:9pt; color:#0a0a0a; }
 
 @media(max-width:700px){
-  nav { padding:12px 20px; }
+  nav { padding:10px 20px; }
   .nav-links { display:none; }
-  #pub-hero,#back-cover-hero,#featured,#books,#summaries,#translation,#author { padding-left:24px; padding-right:24px; }
-  .featured-inner,.book-card { flex-direction:column; gap:28px; }
+  #dedication,#pub-hero,#philosophy-flow,#featured,#books,#summaries,#translation,#author { padding-left:20px; padding-right:20px; }
+  .featured-inner,.book-card { flex-direction:column; gap:24px; }
   .featured-covers { justify-content:center; }
-  .notice-header,.notice-item { padding-left:24px; padding-right:24px; }
-  footer { padding:24px 20px; flex-direction:column; text-align:center; }
+  .speech-bubble { margin-left:0; }
+  .fox-wrap { display:none; }
+  .dl-header,.notice-header,.notice-item { padding-left:20px; padding-right:20px; }
+  footer { padding:20px; flex-direction:column; text-align:center; }
 }
+
+
+/* ===== 강제 진하게 ===== */
+body, body * {
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
+/* 어두운 배경 섹션 */
+#download, #download *,
+#author, #author * {
+  color: #ffffff !important;
+}
+/* 레이블 */
+.summary-part-label,
+.feat-label,
+.ded-label,
+.phi-section-label,
+.stallman-label,
+.section-label,
+.slide-card-label,
+.dl-header-label,
+.notice-label,
+.author-label {
+  color: #1a3a6a !important;
+  font-weight: 700 !important;
+}
+/* 버튼 */
+.btn-white { color: #0a0a0a !important; }
+.lang-btn.active, .lang-btn:hover { color: #ffffff !important; }
+.endless-mailto { color: #1a3a6a !important; }
+/* 링크 */
+a { color: #0a0a0a !important; }
+nav a { color: #0a0a0a !important; }
 </style>
 </head>
 <body>
@@ -239,18 +267,19 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
 
 <nav>
   <a class="nav-logo" href="#">
-    <img src="logo.png" alt="YoungsBooks 로고">
-    <div class="nav-logo-text">
-    <span class="nav-logo-en">YOUNGSBOOKS</span>
-    <span class="nav-logo-kr">영스북스</span>
-  </div>
+    <img src="logo.png" alt="YoungsBooks">
+    <div class="nav-logo-wrap">
+      <span class="nav-logo-en">YOUNGSBOOKS</span>
+      <span class="nav-logo-kr">영스북스</span>
+    </div>
   </a>
   <div class="nav-links">
     <a href="#notice">공지</a>
+    <a href="#dedication">헌정</a>
     <a href="#featured">대표작</a>
     <a href="#books">서재</a>
     <a href="#summaries">AI 요약</a>
-    <a href="#translation">번역 협력</a>
+    <a href="#translation">번역</a>
     <a href="#author">저자에게</a>
   </div>
 </nav>
@@ -259,12 +288,11 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
 <section id="notice">
   <div class="notice-header" onclick="toggleNotice()">
     <img src="logo.png" alt="여우">
-    <span class="notice-label">📢 &nbsp; 공지사항 · Notice</span>
+    <span class="notice-label">📢 공지사항 · Notice</span>
     <span class="notice-toggle" id="notice-arrow">▼</span>
   </div>
   <div class="notice-list" id="notice-list">
     <div id="notice-content">
-      <!-- notice.txt 내용이 여기 들어옵니다 -->
       <div class="notice-item">
         <span class="notice-date">불러오는 중…</span>
         <span class="notice-content"></span>
@@ -273,156 +301,191 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
   </div>
 </section>
 
-<!-- 헌정 - 제일 앞 -->
-<section id="dedication" style="background:#ffffff;border-bottom:2px solid #0a0a0a;">
-
-  <!-- 항상 보이는 부분 (약 1/3) -->
-  <div style="padding:80px 60px 0;">
-    <div style="max-width:860px;margin:0 auto;">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:9pt;letter-spacing:0.35em;text-transform:uppercase;color:#b8996a;margin-bottom:28px;">
-        이 책을 꼭 전하고 싶은 분들께
-      </div>
-      <div style="font-size:11pt;color:#555;line-height:2.2;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #e8e8e8;">
-        윤석산 교수님 &nbsp;·&nbsp; 도올 김용옥 선생님 &nbsp;·&nbsp; 유시민 작가님 &nbsp;·&nbsp;
-        이재명 대통령님 &nbsp;·&nbsp; 송영길 대표님 &nbsp;·&nbsp; 김민석 총리님 &nbsp;·&nbsp;
-        노종면 의원님 &nbsp;·&nbsp; 용혜인 의원님 &nbsp;·&nbsp; 한강 작가님께
-      </div>
-      <!-- 미리보기 텍스트 -->
-      <div style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:0;">
-        저는 처음에 모든 것을 깔아뭉개려 했습니다.<br>
-        노자도, 공자도, 소크라테스도, 성경도 — 기존의 모든 사상을 비판하고 해체하려 했습니다.
-        그런데 하다 보니 그 속에서 진심으로 마음에 드는 것들이 있었습니다...
-      </div>
+<!-- 헌정 편지 -->
+<section id="dedication">
+  <div class="ded-inner">
+    <div class="ded-label">이 책을 꼭 전하고 싶은 분들께</div>
+    <div class="ded-recipients">
+      윤석산 교수님 · 도올 김용옥 선생님 · 유시민 작가님 · 이재명 대통령님 · 송영길 대표님 · 김민석 총리님 · 노종면 의원님 · 용혜인 의원님 · 한강 작가님께
+    </div>
+    <div class="ded-preview">
+      저는 처음에 모든 것을 깔아뭉개려 했습니다. 노자도, 공자도, 소크라테스도, 성경도 — 기존의 모든 사상을 비판하고 해체하려 했습니다...
+    </div>
+    <div class="ded-btn" onclick="toggleDedication()">
+      <span id="ded-arrow" style="display:inline-block;transition:transform 0.3s;">▾</span>
+      <span id="ded-label">편지 전체 읽기</span>
     </div>
   </div>
 
-  <!-- 펼치기 버튼 -->
-  <div style="max-width:860px;margin:0 auto;padding:0 60px;">
-    <div onclick="toggleDedication()"
-      id="ded-btn"
-      style="display:inline-flex;align-items:center;gap:10px;margin:20px 0;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:12pt;font-style:italic;color:#666;padding:12px 0;border-bottom:1px solid #ddd;user-select:none;">
-      <span id="ded-arrow" style="font-size:14pt;transition:transform 0.3s;display:inline-block;">▾</span>
-      <span id="ded-label">편지 전체 읽기 →</span>
-    </div>
-  </div>
-
-  <!-- 접힌 본문 -->
-  <div id="ded-body" style="display:none;padding:0 60px 60px;">
-    <div style="max-width:860px;margin:0 auto;">
-      <div style="display:flex;gap:52px;align-items:flex-start;flex-wrap:wrap;">
-
-        <!-- 여우 -->
-        <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:6px;">
-          <img src="logo.png" style="width:88px;height:88px;object-fit:contain;border-radius:50%;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:9pt;font-style:italic;color:#aaa;text-align:center;line-height:1.7;">허영<br>YoungsBooks</div>
+  <div id="ded-body">
+    <div class="ded-inner" style="position:relative;">
+      <div class="fox-wrap">
+        <img src="logo.png" alt="여우">
+        <div class="fox-name">허영<br>YoungsBooks</div>
+      </div>
+      <div class="speech-bubble">
+        <p class="ded-text">저는 처음에 모든 것을 깔아뭉개려 했습니다. 노자도, 공자도, 소크라테스도, 성경도 — 기존의 모든 사상을 비판하고 해체하려 했습니다. 그런데 하다 보니 그 속에서 진심으로 마음에 드는 것들이 있었습니다. 노자의 순환, 묵자의 겸애, 동학의 인내천, 성경의 안식년과 희년 — 이자를 받지 말라는 그 오래된 명령.</p>
+        <p class="ded-text">그때 한 가지 의문이 생겼습니다.</p>
+        <div class="ded-quote">
+          동서양의 위대한 성현들은 놀랍도록 같은 방향을 가리키고 있었습니다.<br>
+          그런데 왜 인류는 수천 년이 지나도록 그 방향으로 가지 못했는가.<br>
+          80억 인구 중 40억이 성경과 코란을 끼고 살면서, 왜 세상은 여전히 이 모양인가.
         </div>
+        <p class="ded-text">답은 후성유전학에 있었습니다. 기득권은 오랜 세월 사상을 오염시켜 왔습니다. 자신들의 지배력에 불편한 사상은 지워버렸습니다 — 묵자처럼. 편리한 사상은 왜곡했습니다. 그 오염이 인간의 정신에 메틸화처럼 각인되어 대물림됐습니다. 인간이 실천하지 못한 것이 아닙니다. <strong>실천할 수 없도록 정신 자체가 오염된 것입니다.</strong></p>
+        <p class="ded-text">생명을 보십시오. 식물은 강한 빛 아래서 NPQ — 비광화학적 소거 — 라는 기제로 폭주를 막습니다. 그것이 없으면 식물은 타버립니다. 지금의 자본주의는 순환하지 않습니다. 축적하고, 축적하고, 축적합니다. <strong>NPQ가 없는 식물처럼, 폭주하다 타버리는 중입니다.</strong></p>
+        <p class="ded-text">이 책은 생명 생태계의 원리를 경제에 집어넣자는 제안입니다. 순환하는 경제 — 효율이 아니라 <strong>효과가 중심이 되는 경제</strong>입니다. 감동의 최대치를 목적으로 하는 새로운 문명의 설계도. 그리고 AGI입니다. AGI는 인간을 학습합니다. 오염된 것도, 왜곡된 것도 — 그대로 흡수합니다. 지금 이 순간은 AGI의 목적함수를 확정 짓는 마지막 기회입니다. 새로운 경제 문명의 설계와 AGI의 목적함수 설계는 결국 같은 일입니다.</p>
+        <p class="ded-text">이것은 우리 아이들이 살아갈 미래의 문제입니다. 기술자 몇 명이 연구실에서 결정할 일이 아닙니다. 누구도 도망칠 수 없고, 모두가 참여해야 합니다.</p>
+        <div class="ded-box">
+          <p>동의하신다면 — 그 영향력을 적극적으로 발휘해 주십시오.<br>
+          동의하지 않으신다면 — 반박하고, 고치고, 수정해 주십시오.<br>
+          이 수준에 맞는 대안을 함께 제시해 주십시오.</p>
+        </div>
+        <div class="ded-closing">다만 한 가지만 부탁드립니다.<br>외면하지는 말아 주십시오.</div>
+        <div class="ded-sign">— 허영 드림</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- 말풍선 -->
-        <div style="flex:1;min-width:260px;position:relative;">
-          <div style="position:absolute;left:-22px;top:28px;width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:22px solid #0a0a0a;"></div>
-          <div style="position:absolute;left:-18px;top:30px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:18px solid #ffffff;"></div>
-          <div style="border:2px solid #0a0a0a;padding:40px 44px;background:#ffffff;">
+<!-- 출판사 -->
+<section id="pub-hero">
+  <div class="pub-hero-inner">
+    <div class="pub-logo-block">
+      <img src="logo.png" alt="YoungsBooks">
+      <div class="pub-name-block">
+        <div class="pub-name-en">YOUNGSBOOKS</div>
+        <div class="pub-name-kr">영스북스</div>
+      </div>
+    </div>
+    <div class="pub-divider"></div>
+    <p class="pub-philosophy">
+      <strong>지식은 멈추지 않고 흘러야 한다.</strong><br><br>
+      YoungsBooks는 비상업적 카피레프트를 출판 원칙으로 삼습니다.<br>
+      지식과 사상은 소수의 것이 아닙니다.<br>
+      누구나 읽고, 나누고, 토론할 수 있어야 합니다.<br><br>
+      우리는 책을 팔기 위해 만들지 않습니다.<br>
+      생각이 세상에 퍼져나가도록 — 그 흐름을 위해 만듭니다.
+    </p>
+  </div>
+</section>
 
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">
-              저는 처음에 모든 것을 깔아뭉개려 했습니다. 노자도, 공자도, 소크라테스도, 성경도 — 기존의 모든 사상을 비판하고 해체하려 했습니다. 그런데 하다 보니 그 속에서 진심으로 마음에 드는 것들이 있었습니다. 노자의 순환, 묵자의 겸애, 동학의 인내천, 성경의 안식년과 희년 — 이자를 받지 말라는 그 오래된 명령.
-            </p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">그때 한 가지 의문이 생겼습니다.</p>
-            <p style="font-size:13pt;font-weight:400;color:#0a0a0a;line-height:2.0;margin-bottom:24px;padding-left:20px;border-left:3px solid #b8996a;">
-              동서양의 위대한 성현들은 놀랍도록 같은 방향을 가리키고 있었습니다.<br>
-              그런데 왜 인류는 수천 년이 지나도록 그 방향으로 가지 못했는가.<br>
-              80억 인구 중 40억이 성경과 코란을 끼고 살면서, 왜 세상은 여전히 이 모양인가.
-            </p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">답은 후성유전학에 있었습니다.</p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">
-              기득권은 오랜 세월 사상을 오염시켜 왔습니다. 자신들의 지배력에 불편한 사상은 지워버렸습니다 — 묵자처럼. 편리한 사상은 왜곡했습니다. 그 오염이 인간의 정신에 메틸화처럼 각인되어 대물림됐습니다. 인간이 실천하지 못한 것이 아닙니다. <strong>실천할 수 없도록 정신 자체가 오염된 것입니다.</strong>
-            </p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">
-              생명을 보십시오. 식물은 강한 빛 아래서 NPQ — 비광화학적 소거 — 라는 기제로 폭주를 막습니다. 그것이 없으면 식물은 타버립니다. 지금의 자본주의는 순환하지 않습니다. 축적하고, 축적하고, 축적합니다. <strong>NPQ가 없는 식물처럼, 폭주하다 타버리는 중입니다.</strong>
-            </p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">
-              이 책은 생명 생태계의 원리를 경제에 집어넣자는 제안입니다. 순환하는 경제. 인간 존엄을 목적함수로 삼는 새로운 문명의 설계도입니다.
-            </p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:24px;">
-              그리고 지금, 한 가지가 더 추가되었습니다. <strong>AGI입니다.</strong> AGI는 인간을 학습합니다. 오염된 것도, 왜곡된 것도 — 그대로 흡수합니다. 지금 이 순간은 AGI의 목적함수를 확정 짓는 마지막 기회입니다. 새로운 경제 문명의 설계와 AGI의 목적함수 설계는 결국 같은 일입니다.
-            </p>
-            <p style="font-size:12pt;color:#111;line-height:2.2;margin-bottom:32px;">
-              이것은 우리 아이들이 살아갈 미래의 문제입니다. 기술자 몇 명이 연구실에서 결정할 일이 아닙니다. 누구도 도망칠 수 없고, 모두가 참여해야 합니다.
-            </p>
-            <div style="background:#f8f8f8;padding:24px 28px;margin-bottom:32px;border-left:3px solid #0a0a0a;">
-              <p style="font-size:11pt;color:#111;line-height:2.1;">
-                동의하신다면 — 그 영향력을 적극적으로 발휘해 주십시오.<br>
-                동의하지 않으신다면 — 반박하고, 고치고, 수정해 주십시오.<br>
-                이 수준에 맞는 대안을 함께 제시해 주십시오.
-              </p>
+<!-- 감동/한울림 철학 -->
+<section id="philosophy-flow">
+  <div class="phi-inner">
+    <div class="phi-section-label">YoungsBooks의 철학</div>
+    <div class="stallman-box">
+      <div class="stallman-label">Richard Stallman</div>
+      <div class="stallman-quote">"Free Software, Free Society —<br>소프트웨어가 자유로울 때 사회도 자유롭다."</div>
+    </div>
+    <p class="phi-lead">지식은 흘러야 합니다.<br>그러나 지식만으로는 세상이 바뀌지 않습니다.</p>
+    <p class="phi-headline">감동이 공유될 때,<br>비로소 인간이 움직입니다.</p>
+    <p class="phi-body">
+      정보는 복사할 수 있습니다.<br>
+      지식은 가르칠 수 있습니다.<br>
+      그러나 감동은 — 전달되는 것입니다.<br><br>
+      당신의 감동이 공유될 때,<br>
+      전달받은 사람에게서 그 감동은 더 커집니다.<br>
+      더 커진 감동이 또 다른 사람에게 건네질 때,<br>
+      그것은 파문이 되고, 공명이 되고,<br>
+      마침내 <strong>더 거대한 한울림</strong>이 되어<br>
+      세상을 바꾸게 될 것입니다.
+    </p>
+    <div class="phi-closing">
+      <p class="phi-closing-italic">지식은 멈추지 않고 흐른다.<br>감동은 멈추지 않고 커진다.</p>
+      <p class="phi-closing-strong">그것이 새로운 문명의 시작입니다.</p>
+    </div>
+    <div class="phi-declaration">
+      <p>YoungsBooks에서 나오는 모든 책이 이런 방식일 수는 없습니다.<br>
+      그러나 이 책은 그 시작입니다.<br>
+      지식과 감동이 자유롭게 흐르는 것이 가능하다는 것을 —<br>
+      이 책이 먼저 증명할 것입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 다운로드 + 엔드리스북 -->
+<section id="download">
+  <div class="dl-header" onclick="toggleDownload()">
+    <div class="dl-header-left">
+      <img src="logo.png" alt="여우">
+      <div>
+        <div class="dl-header-label">무료 다운로드 · 살아있는 책</div>
+        <div class="dl-header-title">새벽, 그 새로운 개벽을 위하여</div>
+      </div>
+    </div>
+    <div class="dl-header-right">
+      <span class="dl-count-mini" id="dl-count-mini">— 회</span>
+      <span class="dl-arrow" id="dl-arrow">▾</span>
+    </div>
+  </div>
+  <div id="dl-panel">
+    <div class="dl-nav">
+      <button onclick="slideGo(-1)">‹</button>
+      <div class="slide-dots-wrap" id="slide-dots"></div>
+      <button onclick="slideGo(1)">›</button>
+      <span class="dl-slide-label" id="slide-label"></span>
+    </div>
+    <div class="slides-outer">
+      <div class="slides-wrap" id="slides-wrap">
+
+        <!-- 슬라이드 1: 다운로드 -->
+        <div class="slide-card">
+          <div class="slide-card-label">01 · 다운로드</div>
+          <div style="display:flex;gap:36px;align-items:center;flex-wrap:wrap;margin-bottom:28px;">
+            <div>
+              <div style="font-size:9pt;color:#0a0a0a;letter-spacing:0.2em;text-transform:uppercase;font-family:'Cormorant Garamond',serif;margin-bottom:6px;">Total Downloads</div>
+              <div style="display:flex;align-items:baseline;gap:5px;">
+                <span id="download-count" style="font-family:'Cormorant Garamond',serif;font-size:44pt;font-weight:600;color:#1a3a6a;line-height:1;">0</span>
+                <span style="font-size:11pt;color:#0a0a0a;">회</span>
+              </div>
+              <div style="margin-top:10px;width:220px;height:3px;background:#222;border-radius:2px;">
+                <div id="progress-bar" style="height:100%;background:linear-gradient(90deg,#b8996a,#d4b483);width:0%;transition:width 1.2s ease;border-radius:2px;min-width:3px;"></div>
+              </div>
+              <div style="font-size:8pt;color:#0a0a0a;margin-top:5px;">목표: 800,000,000 (전 세계 인구 10분의 1)</div>
             </div>
-            <p style="font-size:13pt;font-weight:600;color:#0a0a0a;line-height:1.8;margin-bottom:28px;">
-              다만 한 가지만 부탁드립니다.<br>외면하지는 말아 주십시오.
-            </p>
-            <div style="text-align:right;border-top:1px solid #e0e0e0;padding-top:20px;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:14pt;font-style:italic;color:#555;">— 허영 드림</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a href="새벽_그새로운개벽을위하여.docx" download onclick="countDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:#b8996a;color:#fff;text-decoration:none;font-family:'Noto Serif KR',serif;font-size:9pt;letter-spacing:0.1em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">↓ 워드(.docx) 다운로드</a>
+              <a href="새벽_그새로운개벽을위하여.pdf" download onclick="countDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:none;color:#0a0a0a;border:1px solid #444;text-decoration:none;font-family:'Noto Serif KR',serif;font-size:9pt;letter-spacing:0.1em;">↓ PDF (준비 중)</a>
             </div>
           </div>
+          <div style="font-size:9pt;color:#0a0a0a;line-height:1.9;border-top:1px solid #1a1a1a;padding-top:14px;">
+            비상업적 카피레프트 · 자유롭게 읽고, 나누고, 토론하세요<br>
+            정가 35,000원 · <em>친구와 토론하면 공짜</em> · 상업적 이용 문의: hololord@naver.com
+          </div>
         </div>
+
+        <!-- 슬라이드 2: 엔드리스 북 -->
+        <div class="slide-card">
+          <div class="slide-card-label">02 · 살아있는 책 · Endless Book</div>
+          <div class="endless-title">"이 책은 교정이 끝나지 않는 책입니다."</div>
+          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">틀린 것이 있다면 — 고쳐주세요</span></div>
+          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">동의하지 않는다면 — 반박해주세요</span></div>
+          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">부족하다면 — 채워주세요</span></div>
+          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">더 명확한 개념어가 있다면 — 제시해주세요</span></div>
+          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">띄어쓰기 하나라도 틀렸다면 — 알려주세요</span></div>
+          <div style="margin-top:20px;font-size:11pt;color:#0a0a0a;line-height:1.9;">
+            독자의 지적과 제안은 모두 검토합니다.<br>
+            반영 여부와 이유는 수정 이력에 공개합니다.
+          </div>
+          <a href="mailto:hololord@naver.com?subject=새벽 독자 의견" class="endless-mailto">의견 보내기 →</a>
+        </div>
+
+        <!-- 슬라이드 3: 수정 이력 -->
+        <div class="slide-card">
+          <div class="slide-card-label">03 · 수정 이력 · Changelog</div>
+          <div id="changelog-content"><div style="font-size:10pt;color:#0a0a0a;">불러오는 중...</div></div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- 1. 출판사 -->
-<section id="pub-hero">
-  <!-- 로고 + 텍스트 나란히 -->
-  <div style="display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:36px;flex-wrap:wrap;">
-    <img src="logo.png" alt="YoungsBooks 로고" style="width:140px;height:140px;object-fit:contain;border-radius:50%;box-shadow:0 8px 32px rgba(0,0,0,0.12);">
-    <div style="text-align:left;">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:11pt;font-weight:400;letter-spacing:0.35em;color:#aaa;text-transform:uppercase;margin-bottom:6px;">YOUNGSBOOKS</div>
-      <div style="font-family:'Noto Serif KR',serif;font-size:clamp(32pt,6vw,52pt);font-weight:600;letter-spacing:0.06em;color:#0a0a0a;line-height:1.0;">영스북스</div>
-    </div>
-  </div>
-  <div class="pub-divider"></div>
-  <p class="pub-philosophy">
-    <strong>지식은 멈추지 않고 흘러야 한다.</strong><br><br>
-    YoungsBooks는 비상업적 카피레프트를 출판 원칙으로 삼습니다.<br>
-    지식과 사상은 소수의 것이 아닙니다.<br>
-    누구나 읽고, 나누고, 토론할 수 있어야 합니다.<br><br>
-    우리는 책을 팔기 위해 만들지 않습니다.<br>
-    생각이 세상에 퍼져나가도록 — 그 흐름을 위해 만듭니다.
-  </p>
-</section>
-
-<!-- 2. 뒤표지 핵심 문구 -->
-<section id="back-cover-hero">
-  <div class="bc-inner">
-    <p class="bc-question">
-      당신은 지금 이 순간 존재하고 있는가.<br>
-      아니면 살아남기 위해 <strong>존재를 유예하고 있는가.</strong>
-    </p>
-    <p class="bc-formula">
-      ∫Life × 감동(感動) dt<br>
-      — 감동의 적분이 존엄이 아닌가
-    </p>
-    <p class="bc-statement">
-      감동 없는 목적함수는 <strong>인류를 위한 것이 아니다.</strong><br>
-      AGI가 <strong>인간의 존엄</strong>을 포함하지 않을 때,<br>
-      우리가 살아남는 것이 가능할까.
-    </p>
-    <p class="bc-statement">
-      인간은 <strong>서로를 알아보며 감동하는</strong> 존재다.<br>
-      우리는 이제 사피엔스란 이름대로<br>
-      진정 지혜로운 존재가 되어야 한다.
-    </p>
-    <div class="bc-homo">호모 한울림 시그니피컨스<br><span style="font-size:0.65em;font-weight:300;letter-spacing:0.2em;">HOMO HANULLIM SIGNIFICANS</span></div>
-    <p class="bc-invite">
-      ✦ &nbsp; 전 지구적 토론의 장으로의 초대 &nbsp; ✦<br><br>
-      이 책은 결론이 아니라 <strong>초대장이다.</strong>
-    </p>
-  </div>
-</section>
-
-<!-- 3. 대표작 -->
+<!-- 대표작 -->
 <section id="featured">
   <div class="featured-inner">
     <div class="featured-text">
-      <div class="feat-homo">HOMO HANULLIM SIGNIFICANS</div>
+      <div class="feat-label">HOMO HANULLIM SIGNIFICANS</div>
       <h1 class="feat-title">새벽,<br>그 새로운 개벽을 위하여</h1>
       <div class="feat-subtitle">LifeCoin, AGI 시대 인간 존엄의 설계도</div>
       <div class="feat-divider"></div>
@@ -445,15 +508,15 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
   </div>
 </section>
 
-<!-- 4. 서재 -->
+<!-- 서재 -->
 <section id="books">
   <div class="books-inner">
     <div class="section-label">서재</div>
     <h2 class="section-title">YoungsBooks의 책들</h2>
     <div class="books-grid">
       <div class="book-card">
-        <div><img src="cover_front.png" alt="새벽 표지" style="width:150px;box-shadow:0 12px 36px rgba(0,0,0,0.15);transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"></div>
-        <div class="book-info">
+        <div><img src="cover_front.png" style="width:150px;box-shadow:0 12px 36px rgba(0,0,0,0.15);transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"></div>
+        <div>
           <span class="book-status status-out">출판</span>
           <div class="book-title">새벽, 그 새로운 개벽을 위하여</div>
           <div class="book-author">허영 지음 · 2025</div>
@@ -463,7 +526,7 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
       </div>
       <div class="book-card">
         <div class="book-cover-placeholder">표지<br>준비 중</div>
-        <div class="book-info">
+        <div>
           <span class="book-status status-soon">출판 예정</span>
           <div class="book-title">우리 아빠의 아주 특별한 우주</div>
           <div class="book-author">허영 지음 · 근간</div>
@@ -473,7 +536,7 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
       </div>
       <div class="book-card">
         <div class="book-cover-placeholder">표지<br>준비 중</div>
-        <div class="book-info">
+        <div>
           <span class="book-status status-review">검토 중</span>
           <div class="book-title">너와 나</div>
           <div class="book-author">저자 · 20~30년 전 작</div>
@@ -485,12 +548,12 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
   </div>
 </section>
 
-<!-- 5. AI 요약 -->
+<!-- AI 요약 -->
 <section id="summaries">
   <div class="sum-inner">
     <div class="section-label">AI 3인의 시각</div>
     <h2 class="section-title">같은 책, 세 개의 눈</h2>
-    <p style="font-size:12pt;color:#333;margin-bottom:36px;line-height:2.0;">세계 최고 AI 세 곳이 각자의 방식으로 이 책을 읽었습니다.<br>저자의 진짜 생각은 — 저자에게 직접 물어보세요.</p>
+    <p style="font-size:12pt;color:#0a0a0a;margin-bottom:32px;line-height:2.0;">세계 최고 AI 세 곳이 각자의 방식으로 이 책을 읽었습니다.<br>저자의 진짜 생각은 — 저자에게 직접 물어보세요.</p>
     <div class="ai-tabs">
       <button class="ai-tab active" onclick="switchTab('claude',event)">Claude</button>
       <button class="ai-tab" onclick="switchTab('gemini',event)">Gemini</button>
@@ -505,14 +568,14 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
         <div class="summary-part">
           <div class="summary-part-label">1부 · 씨앗</div>
           <div class="summary-part-title">나는 있는가? — 존재의 물음을 다시 세우다</div>
-          <div class="summary-text">저자는 소설을 쓰겠다는 결심에서 시작해, 자신의 존재를 묻는 철학적 여정으로 나아간다. 핵심은 천부경의 첫 구절 "일시무시일(一始無始一)" — 하나는 시작이되 시작이 없는 하나. 저자는 이 역설을 현대 과학(ATP, 후성유전학)과 연결하며 "존재는 비존재보다 먼저"라는 명제를 세운다. 나는 있다. 그리고 그 있음은 이미 존엄이다.</div>
+          <div class="summary-text">저자는 소설을 쓰겠다는 결심에서 시작해, 자신의 존재를 묻는 철학적 여정으로 나아간다. 핵심은 천부경의 끊어 읽기다. "일시무시 / 일석삼극(一始無始 一析三極)" — 있음(一)이 시작되자 비로소 없음(無)이 시작되었다. 그리고 그 있음이 쪼개져 셋이 된다. 있음이 먼저다. 기존 해석처럼 一始와 一終을 대구로 보는 것이 아니다. 마지막 구절 "일종무종일(一終無終一)"의 마지막 一은 이 우주의 종말과 동시에 새로운 우주의 새로운 시작이다 — 최치원이 시인으로서 쓴 감탄사처럼, "아, 있음이여!" 저자는 이 해석을 현대 과학(ATP, 후성유전학)과 연결하며 "존재는 비존재에 앞선다"는 명제를 세운다. 나는 있다. 그리고 그 있음은 이미 존엄이다.</div>
           <div class="lang-toggle">
             <button class="lang-btn" onclick="toggleLang(this,'c1-en')">EN</button>
             <button class="lang-btn" onclick="toggleLang(this,'c1-zh')">中文</button>
             <button class="lang-btn" onclick="toggleLang(this,'c1-es')">ES</button>
-            <div class="lang-content" id="c1-en">The author begins with a single resolve — to write a novel — and unfolds it into a philosophical inquiry into existence itself. At the center stands the Cheonbugyeong's paradox: "One begins, yet beginningless One." Connecting this to modern science, the author argues that existence precedes non-existence. I am. And that very being is already dignity.</div>
-            <div class="lang-content" id="c1-zh">作者从写小说的决心出发，展开了探索自身存在的哲学之旅。核心在于天符经首句"一始无始一"。将这一悖论与现代科学相连，提出"存在先于非存在"的命题。我存在。而这种存在本身已是尊严。</div>
-            <div class="lang-content" id="c1-es">El autor despliega una indagación filosófica sobre la existencia misma. Conectando la paradoja del Cheonbugyeong con la ciencia moderna, argumenta que la existencia precede a la no-existencia. Existo. Y ese existir ya es dignidad.</div>
+            <div class="lang-content" id="c1-en">The author begins with a single resolve — to write a novel — and unfolds it into a philosophical inquiry into existence itself. Connecting the Cheonbugyeong's paradox with modern science, the author argues that existence precedes non-existence. I am. And that very being is already dignity.</div>
+            <div class="lang-content" id="c1-zh">作者从写小说的决心出发，展开了探索自身存在的哲学之旅。将天符经悖论与现代科学相连，提出"存在先于非存在"的命题。我存在。而这种存在本身已是尊严。</div>
+            <div class="lang-content" id="c1-es">El autor despliega una indagación filosófica sobre la existencia. Conectando la paradoja del Cheonbugyeong con la ciencia moderna, argumenta que la existencia precede a la no-existencia. Existo. Y ese existir ya es dignidad.</div>
           </div>
         </div>
         <div class="summary-part">
@@ -522,14 +585,14 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
           <div class="lang-toggle">
             <button class="lang-btn" onclick="toggleLang(this,'c2-en')">EN</button>
             <button class="lang-btn" onclick="toggleLang(this,'c2-zh')">中文</button>
-            <div class="lang-content" id="c2-en">Part II centers on "Sisyphus's Divine Comedy" — an inversion of Dante. Nine layers map modern civilization's hells. The author dissects capitalism's structural plunder and exploitation in God's name. Negatio is not destruction — it is the courage to look directly at what has gone wrong.</div>
+            <div class="lang-content" id="c2-en">Part II centers on "Sisyphus's Divine Comedy." Nine layers map modern civilization's hells. The author dissects capitalism's structural plunder and exploitation in God's name. Negatio is not destruction — it is the courage to look directly at what has gone wrong.</div>
             <div class="lang-content" id="c2-zh">第二部以"西西弗斯的神曲"为核心。九层地狱绘制了现代文明的地图。作者解剖资本主义的结构性掠夺与以神名义进行的剥削。否定不是破坏——而是直视错误所在的勇气。</div>
           </div>
         </div>
         <div class="summary-part">
           <div class="summary-part-label">3부 · 꽃망울</div>
           <div class="summary-part-title">호모 한울림 — 의미를 부여하는 새로운 인간</div>
-          <div class="summary-text">3부는 새로운 인간상과 경제 모델을 제시한다. "향아설위(向我設位)" — 나를 향해 자리를 설하라. 동학의 이 명제를 AGI 시대 인간 주체성의 선언으로 재해석한다. LifeCoin 경제 모델: 의미 본위의 화폐, 소유에서 관계로. 호모 한울림 Significans — 의미를 부여하는 자가 곧 새로운 인간이다. 꽃망울은 아직 피지 않았다. 그러나 이미 봄이다.</div>
+          <div class="summary-text">3부는 새로운 인간상과 경제 모델을 제시한다. "향아설위(向我設位)" — 나를 향해 자리를 설하라. 동학의 이 명제를 AGI 시대 인간 주체성의 선언으로 재해석한다. LifeCoin 경제 모델: 의미 본위의 화폐, 소유에서 관계로. 꽃망울은 아직 피지 않았다. 그러나 이미 봄이다.</div>
           <div class="lang-toggle">
             <button class="lang-btn" onclick="toggleLang(this,'c3-en')">EN</button>
             <button class="lang-btn" onclick="toggleLang(this,'c3-zh')">中文</button>
@@ -541,36 +604,35 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
     </div>
     <div class="ai-panel" id="panel-gemini">
       <div class="ai-intro"><div class="ai-badge">G</div><div><div class="ai-name">Gemini (Google)</div><div class="ai-desc">곧 업데이트됩니다.</div></div></div>
-      <div style="padding:60px;text-align:center;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:15pt;font-style:italic;color:#888;">Gemini의 시각으로 본 요약이 곧 이 자리를 채울 것입니다.</p></div>
+      <div style="padding:48px;text-align:center;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:14pt;font-style:italic;color:#0a0a0a;">Gemini의 시각으로 본 요약이 곧 이 자리를 채울 것입니다.</p></div>
     </div>
     <div class="ai-panel" id="panel-gpt">
       <div class="ai-intro"><div class="ai-badge">⊕</div><div><div class="ai-name">ChatGPT (OpenAI)</div><div class="ai-desc">곧 업데이트됩니다.</div></div></div>
-      <div style="padding:60px;text-align:center;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:15pt;font-style:italic;color:#888;">ChatGPT의 시각으로 본 요약이 곧 이 자리를 채울 것입니다.</p></div>
+      <div style="padding:48px;text-align:center;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:14pt;font-style:italic;color:#0a0a0a;">ChatGPT의 시각으로 본 요약이 곧 이 자리를 채울 것입니다.</p></div>
     </div>
   </div>
 </section>
 
-
-<!-- 번역 협력 -->
+<!-- 번역 -->
 <section id="translation">
   <div class="books-inner">
     <div class="section-label">번역 협력</div>
     <h2 class="section-title">번역 협력자를 찾습니다</h2>
     <div class="trans-inner">
-      <p class="trans-text">이 책의 외국어 번역본은 Claude, ChatGPT, Gemini의 도움을 받아 작성되었습니다. 저자는 해당 언어들을 직접 구사하지 못하기 때문에, 번역의 정확성과 문맥의 자연스러움에 대해 완전한 책임을 지기 어렵습니다.</p>
-      <p class="trans-text">번역본을 읽으시다가 어색한 표현, 오역, 혹은 철학적 뉘앙스가 손상된 부분을 발견하셨다면 — 부디 알려주세요. 토론도 환영합니다.</p>
-      <p class="trans-text">이 책의 사상에 공감하고 해당 언어권에서 제대로 된 번역과 전파를 함께 해주실 번역 협력자를 찾고 있습니다. 번역 협력이 이루어질 경우, 해당 언어판 출판 시 <strong>번역자 이름을 공식 크레딧으로 표기</strong>하며, <strong>수익 배분에 대해서는 별도 협의</strong>합니다.</p>
+      <p class="trans-text">이 책의 외국어 번역본은 Claude, ChatGPT, Gemini의 도움을 받아 작성되었습니다. 저자는 해당 언어들을 직접 구사하지 못하기 때문에, 번역의 정확성과 자연스러움에 대해 완전한 책임을 지기 어렵습니다.</p>
+      <p class="trans-text">어색한 표현, 오역, 철학적 뉘앙스가 손상된 부분을 발견하셨다면 — 부디 알려주세요.</p>
+      <p class="trans-text">이 사상에 공감하고 해당 언어권에서 함께 전파해주실 번역 협력자를 찾고 있습니다. <strong>번역자 이름을 공식 크레딧으로 표기</strong>하며, <strong>수익 배분은 별도 협의</strong>합니다.</p>
       <div class="trans-highlight">"인간의 언어만큼 다양한 방식으로 이 생각이 퍼져나가길 바랍니다."</div>
-      <a href="mailto:hololord@naver.com?subject=번역 협력 문의" style="padding:14px 36px;background:#0a0a0a;color:#fff;text-decoration:none;display:inline-block;font-family:'Noto Serif KR',serif;font-size:9pt;letter-spacing:0.18em;text-transform:uppercase;">번역 협력 문의하기</a>
+      <a href="mailto:hololord@naver.com?subject=번역 협력 문의" style="padding:13px 32px;background:#0a0a0a;color:#fff;text-decoration:none;display:inline-block;font-family:'Noto Serif KR',serif;font-size:9pt;letter-spacing:0.15em;">번역 협력 문의하기</a>
     </div>
   </div>
 </section>
 
-<!-- 7. 저자에게 -->
+<!-- 저자에게 -->
 <section id="author">
-  <div style="max-width:640px;margin:0 auto;">
+  <div style="max-width:620px;margin:0 auto;">
     <div class="author-label">저자에게 직접</div>
-    <h2 class="author-heading">AI 셋이 읽었다.<br>그런데 저자의 진짜 생각은?</h2>
+    <h2 class="author-heading">AI 셋이 읽었다.<br>저자의 진짜 생각은?</h2>
     <p class="author-quote">"이 책은 결론이 아니라 초대장이다.<br>가장 중요한 대화는 아직 시작되지 않았다."</p>
     <p class="author-sub">동의해도 좋고, 반박해도 좋습니다.<br>저자 허영에게 직접 물어보세요.</p>
     <div>
@@ -581,23 +643,18 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
 </section>
 
 <footer>
-  <div class="footer-logo">
-    <img src="logo.png" alt="YoungsBooks">
-    YOUNGSBOOKS
-  </div>
+  <div class="footer-logo"><img src="logo.png" alt="YoungsBooks">YOUNGSBOOKS</div>
   <div class="footer-copy">© 2025 허영 · hololord@naver.com · 비상업적 카피레프트</div>
 </footer>
 
 <script>
-// 공지 토글
+// 공지
 function toggleNotice() {
   const list = document.getElementById('notice-list');
   const arrow = document.getElementById('notice-arrow');
   list.classList.toggle('open');
   arrow.classList.toggle('open');
 }
-
-// notice.txt 불러오기
 fetch('notice.txt?v=' + Date.now())
   .then(r => r.text())
   .then(text => {
@@ -607,19 +664,107 @@ fetch('notice.txt?v=' + Date.now())
       const parts = line.split('|');
       const date = parts[0] ? parts[0].trim() : '';
       const content = parts.slice(1).join('|').trim() || line.trim();
-      return `<div class="notice-item">
-        <span class="notice-date">${date}</span>
-        <span class="notice-content">${content}</span>
-      </div>`;
+      return '<div class="notice-item"><span class="notice-date">' + date + '</span><span class="notice-content">' + content + '</span></div>';
     }).join('');
-    // 첫 번째 공지 자동으로 펼치기
     document.getElementById('notice-list').classList.add('open');
     document.getElementById('notice-arrow').classList.add('open');
-  })
-  .catch(() => {
-    document.getElementById('notice-content').innerHTML =
-      '<div class="notice-item"><span class="notice-date">—</span><span class="notice-content">공지사항을 불러오는 중입니다.</span></div>';
+  }).catch(() => {});
+
+// 헌정 편지
+function toggleDedication() {
+  const body = document.getElementById('ded-body');
+  const arrow = document.getElementById('ded-arrow');
+  const label = document.getElementById('ded-label');
+  const isOpen = body.style.display === 'block';
+  body.style.display = isOpen ? 'none' : 'block';
+  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+  label.textContent = isOpen ? '편지 전체 읽기' : '접기';
+}
+
+// 다운로드 슬라이더
+let currentSlide = 0;
+const totalSlides = 3;
+function toggleDownload() {
+  const panel = document.getElementById('dl-panel');
+  const arrow = document.getElementById('dl-arrow');
+  const isOpen = panel.style.display === 'block';
+  panel.style.display = isOpen ? 'none' : 'block';
+  arrow.classList.toggle('open', !isOpen);
+  if (!isOpen) { initSlider(); }
+}
+function initSlider() {
+  const dots = document.getElementById('slide-dots');
+  dots.innerHTML = '';
+  for (let i = 0; i < totalSlides; i++) {
+    const d = document.createElement('div');
+    d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToSlide(i);
+    dots.appendChild(d);
+  }
+  updateSlider();
+  loadChangelog();
+}
+function slideGo(dir) {
+  currentSlide = Math.max(0, Math.min(totalSlides - 1, currentSlide + dir));
+  updateSlider();
+}
+function goToSlide(n) { currentSlide = n; updateSlider(); }
+function updateSlider() {
+  const wrap = document.getElementById('slides-wrap');
+  const cardWidth = wrap.children[0].offsetWidth + 22;
+  wrap.style.transform = 'translateX(-' + (currentSlide * cardWidth) + 'px)';
+  document.querySelectorAll('.slide-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
   });
+  const labels = ['다운로드', '살아있는 책', '수정 이력'];
+  document.getElementById('slide-label').textContent = (currentSlide + 1) + ' / ' + totalSlides + ' · ' + labels[currentSlide];
+}
+async function loadChangelog() {
+  try {
+    const res = await fetch('changelog.txt?v=' + Date.now());
+    const text = await res.text();
+    const lines = text.trim().split('\n').filter(l => l.trim());
+    const container = document.getElementById('changelog-content');
+    if (!lines.length) { container.innerHTML = '<p style="font-size:10pt;color:#0a0a0a;font-style:italic;">아직 수정 이력이 없습니다.</p>'; return; }
+    const colors = { '수정': '#6a9a6a', '병기': '#6a7a9a', '반영': '#b8996a', '보류': '#666' };
+    container.innerHTML = lines.map(line => {
+      const parts = line.split('|');
+      const date = parts[0] ? parts[0].trim() : '';
+      const type = parts[1] ? parts[1].trim() : '';
+      const desc = parts.slice(2).join('|').trim();
+      const color = colors[type] || '#666';
+      return '<div class="changelog-item"><span class="changelog-date">' + date + '</span><span class="changelog-type" style="border:1px solid ' + color + ';color:' + color + ';">' + (type || '—') + '</span><span class="changelog-desc">' + desc + '</span></div>';
+    }).join('');
+  } catch (e) { document.getElementById('changelog-content').innerHTML = '<p style="font-size:10pt;color:#0a0a0a;">불러올 수 없습니다.</p>'; }
+}
+
+// 카운터
+const NS = 'youngsbooks2025';
+const KEY = 'saebuk-v1';
+async function loadCount() {
+  try {
+    const res = await fetch('https://api.countapi.xyz/get/' + NS + '/' + KEY);
+    const data = await res.json();
+    updateDisplay(data.value || 0);
+  } catch (e) { updateDisplay(0); }
+}
+async function countDownload() {
+  try {
+    const res = await fetch('https://api.countapi.xyz/hit/' + NS + '/' + KEY);
+    const data = await res.json();
+    updateDisplay(data.value || 0);
+  } catch (e) {}
+}
+function updateDisplay(count) {
+  const el = document.getElementById('download-count');
+  const mini = document.getElementById('dl-count-mini');
+  if (el) el.textContent = count.toLocaleString('ko-KR');
+  if (mini) mini.textContent = count.toLocaleString('ko-KR') + ' 회';
+  const pct = Math.min((count / 800000000) * 100, 100);
+  const bar = document.getElementById('progress-bar');
+  if (bar) setTimeout(() => { bar.style.width = Math.max(pct, 0.05) + '%'; }, 500);
+}
+loadCount();
 
 // AI 탭
 function switchTab(name, e) {
@@ -637,126 +782,6 @@ function toggleLang(btn, id) {
   btn.closest('.lang-toggle').querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
   if (!isShow) { content.classList.add('show'); btn.classList.add('active'); }
 }
-</script>
-
-<script>
-// 다운로드 카운터 + 슬라이더
-const NAMESPACE = 'youngsbooks2025';
-const KEY = 'saebuk-v1';
-let currentSlide = 0;
-const totalSlides = 3;
-
-async function loadCount() {
-  try {
-    const res = await fetch('https://api.countapi.xyz/get/' + NAMESPACE + '/' + KEY);
-    const data = await res.json();
-    updateDisplay(data.value || 0);
-  } catch(e) { updateDisplay(0); }
-}
-
-async function countDownload() {
-  try {
-    const res = await fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY);
-    const data = await res.json();
-    updateDisplay(data.value || 0);
-  } catch(e) {}
-}
-
-function updateDisplay(count) {
-  const el = document.getElementById('download-count');
-  const mini = document.getElementById('dl-count-mini');
-  if(el) el.textContent = count.toLocaleString('ko-KR');
-  if(mini) mini.textContent = count.toLocaleString('ko-KR') + ' 회';
-  const pct = Math.min((count / 800000000) * 100, 100);
-  const bar = document.getElementById('progress-bar');
-  if(bar) setTimeout(() => { bar.style.width = Math.max(pct, 0.05) + '%'; }, 500);
-}
-
-
-function toggleDedication() {
-  const body = document.getElementById('ded-body');
-  const arrow = document.getElementById('ded-arrow');
-  const label = document.getElementById('ded-label');
-  const isOpen = body.style.display !== 'none';
-  body.style.display = isOpen ? 'none' : 'block';
-  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-  label.textContent = isOpen ? '편지 전체 읽기' : '접기';
-}
-
-function toggleDownload() {
-  const panel = document.getElementById('dl-panel');
-  const arrow = document.getElementById('dl-toggle-arrow');
-  const isOpen = panel.style.display !== 'none';
-  panel.style.display = isOpen ? 'none' : 'block';
-  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-  if(!isOpen) { initSlider(); }
-}
-
-function initSlider() {
-  const dots = document.getElementById('slide-dots');
-  dots.innerHTML = '';
-  for(let i=0; i<totalSlides; i++) {
-    const d = document.createElement('div');
-    d.style.cssText = 'width:8px;height:8px;border-radius:50%;background:' + (i===currentSlide?'#b8996a':'#333') + ';cursor:pointer;transition:background 0.2s;';
-    d.onclick = () => goToSlide(i);
-    dots.appendChild(d);
-  }
-  updateSlider();
-  loadChangelog();
-}
-
-function slideGo(dir) {
-  currentSlide = Math.max(0, Math.min(totalSlides-1, currentSlide + dir));
-  updateSlider();
-}
-
-function goToSlide(n) {
-  currentSlide = n;
-  updateSlider();
-}
-
-function updateSlider() {
-  const wrap = document.getElementById('slides-wrap');
-  const cardWidth = wrap.children[0].offsetWidth + 24;
-  wrap.style.transform = 'translateX(-' + (currentSlide * cardWidth) + 'px)';
-  const dots = document.getElementById('slide-dots').children;
-  for(let i=0; i<dots.length; i++) {
-    dots[i].style.background = i===currentSlide ? '#b8996a' : '#333';
-  }
-  const labels = ['다운로드', '살아있는 책', '수정 이력'];
-  document.getElementById('slide-label').textContent = (currentSlide+1) + ' / ' + totalSlides + '  · ' + labels[currentSlide];
-}
-
-async function loadChangelog() {
-  try {
-    const res = await fetch('changelog.txt?v=' + Date.now());
-    const text = await res.text();
-    const lines = text.trim().split('
-').filter(l => l.trim());
-    const container = document.getElementById('changelog-content');
-    if(lines.length === 0) {
-      container.innerHTML = '<p style="font-size:10pt;color:#444;font-style:italic;">아직 수정 이력이 없습니다.</p>';
-      return;
-    }
-    container.innerHTML = lines.map(line => {
-      const parts = line.split('|');
-      const date = parts[0] ? parts[0].trim() : '';
-      const type = parts[1] ? parts[1].trim() : '';
-      const desc = parts.slice(2).join('|').trim();
-      const colors = {'수정':'#6a9a6a','병기':'#6a7a9a','반영':'#b8996a','보류':'#666'};
-      const color = colors[type] || '#666';
-      return '<div style="padding:12px 0;border-bottom:1px solid #1a1a1a;display:flex;gap:14px;align-items:baseline;">' +
-        '<span style="font-size:8pt;color:#444;font-family:Cormorant Garamond,serif;min-width:80px;flex-shrink:0;">' + date + '</span>' +
-        '<span style="font-size:8pt;border:1px solid ' + color + ';color:' + color + ';padding:2px 8px;letter-spacing:0.1em;flex-shrink:0;">' + (type||'—') + '</span>' +
-        '<span style="font-size:10pt;color:#aaa;line-height:1.7;">' + desc + '</span>' +
-        '</div>';
-    }).join('');
-  } catch(e) {
-    document.getElementById('changelog-content').innerHTML = '<p style="font-size:10pt;color:#444;">수정 이력을 불러올 수 없습니다.</p>';
-  }
-}
-
-loadCount();
 </script>
 </body>
 </html>
