@@ -21,11 +21,17 @@ nav {
 .nav-logo {
   display:flex; align-items:center; gap:12px; text-decoration:none;
 }
-.nav-logo img { height:42px; width:42px; object-fit:contain; border-radius:50%; }
-.nav-logo-text {
+.nav-logo img { height:58px; width:58px; object-fit:contain; border-radius:50%; }
+.nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+.nav-logo-en {
   font-family:'Cormorant Garamond',serif;
-  font-size:22pt; font-weight:600; letter-spacing:0.15em;
-  color:#0a0a0a; text-transform:uppercase;
+  font-size:13pt; font-weight:600; letter-spacing:0.2em;
+  color:#888; text-transform:uppercase;
+}
+.nav-logo-kr {
+  font-family:'Noto Serif KR',serif;
+  font-size:17pt; font-weight:600; letter-spacing:0.08em;
+  color:#0a0a0a;
 }
 .nav-links { display:flex; gap:24px; }
 .nav-links a { font-size:9pt; letter-spacing:0.18em; text-transform:uppercase; color:#444; text-decoration:none; transition:color 0.2s; }
@@ -155,7 +161,7 @@ nav {
 .featured-covers img { box-shadow:0 16px 48px rgba(0,0,0,0.18); transition:transform 0.3s; }
 .featured-covers img:hover { transform:translateY(-5px); }
 .cover-front { width:200px; }
-.cover-back  { width:138px; margin-top:24px; opacity:0.9; }
+.cover-back  { width:200px; opacity:1; }
 
 /* ── 4. 서재 ── */
 #books { padding:100px 60px; background:#ffffff; border-bottom:2px solid #0a0a0a; }
@@ -240,7 +246,10 @@ footer { padding:36px 60px; border-top:2px solid #0a0a0a; display:flex; justify-
 <nav>
   <a class="nav-logo" href="#">
     <img src="logo.png" alt="YoungsBooks 로고">
-    <span class="nav-logo-text">YOUNGSBOOKS</span>
+    <div class="nav-logo-text">
+    <span class="nav-logo-en">YOUNGSBOOKS</span>
+    <span class="nav-logo-kr">영스북스</span>
+  </div>
   </a>
   <div class="nav-links">
     <a href="#notice">공지</a>
