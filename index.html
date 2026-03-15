@@ -254,12 +254,16 @@ body, body * {
   font-weight: 300 !important;
 }
 /* 버튼 */
-.btn-white { color: #0a0a0a !important; }
+.btn-white { color: #0a0a0a !important; background:#fff !important; }
+.btn-outline { color: #fff !important; }
 .lang-btn.active, .lang-btn:hover { color: #ffffff !important; }
 .endless-mailto { color: #1a3a6a !important; }
-/* 링크 */
-a { color: #0a0a0a !important; }
+/* 링크 — 기본 검정, 어두운 배경 위는 흰색 */
+a { color: #0a0a0a; }
 nav a { color: #0a0a0a !important; }
+#download a, #download a:visited { color: #fff !important; }
+#author a, #author a:visited { color: #fff !important; }
+#translation a[href^="mailto"] { color: #fff !important; }
 @media(max-width:700px){
   body { font-size:16px !important; line-height:1.8 !important; }
   .pub-name-kr { font-size:22pt !important; }
@@ -891,7 +895,7 @@ nav a { color: #0a0a0a !important; }
         </p>
       </div>
 
-      <p style="font-size:15px;color:#ccc;text-align:center;line-height:1.8;margin-bottom:0;">
+      <p style="font-size:17px;color:#ccc;text-align:center;line-height:1.8;margin-bottom:0;">
         "AGI는 이제 '왜 인간을 살려야 하는가'를 묻지 않는다.<br>
         대신 '어떻게 하면 인간이 더 깊은 감동을 느끼게 할 것인가'를 계산한다."
       </p>
