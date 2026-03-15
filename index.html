@@ -51,7 +51,7 @@ nav {
 .ded-preview { font-size:16px; color:#0a0a0a; line-height:2.1; margin-bottom:16px; }
 .ded-btn { display:inline-flex; align-items:center; gap:10px; margin:16px 0 0; cursor:pointer; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:16px; font-style:normal; color:#0a0a0a; padding:12px 0; border-bottom:2px solid #0a0a0a; user-select:none; }
 .ded-btn:hover { color:#0a0a0a; }
-#ded-body { display:none; padding:40px 0 60px; }
+#ded-body { padding:40px 0 60px; }
 .speech-bubble { border:2px solid #0a0a0a; padding:36px 40px; background:#ffffff; position:relative; margin-left:120px; }
 .speech-bubble::before { content:''; position:absolute; left:-22px; top:28px; width:0; height:0; border-top:10px solid transparent; border-bottom:10px solid transparent; border-right:22px solid #0a0a0a; }
 .speech-bubble::after { content:''; position:absolute; left:-17px; top:30px; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-right:17px solid #ffffff; }
@@ -355,7 +355,7 @@ nav a { color: #0a0a0a !important; }
     </div>
   </div>
 
-  <div id="ded-body" style="display:none;">
+  <div id="ded-body">
     <div class="ded-inner" style="position:relative;">
       <div class="fox-wrap">
         
@@ -508,9 +508,12 @@ nav a { color: #0a0a0a !important; }
   </div>
 
   <!-- 블록 3: 수정 이력 -->
-  <div id="changelog-section" style="padding:48px 40px;">
-    <div style="font-size:18px;letter-spacing:0.2em;text-transform:uppercase;color:#b8996a;margin-bottom:16px;font-weight:700;">수정 이력 · Changelog</div>
-    <div id="changelog-content"><div style="font-size:16px;color:#ccc;">불러오는 중...</div></div>
+  <div id="changelog-section" style="border-top:1px solid #1a1a1a;">
+    <div onclick="toggleChangelog()" style="display:flex;align-items:center;justify-content:space-between;padding:28px 40px;cursor:pointer;">
+      <div style="font-size:18px;letter-spacing:0.2em;text-transform:uppercase;color:#b8996a;font-weight:700;">수정 이력 · Changelog</div>
+      <span id="changelog-arrow" style="font-size:18px;color:#b8996a;transition:transform 0.3s;">▼</span>
+    </div>
+    <div id="changelog-content" style="display:none;padding:0 40px 40px;"></div>
   </div>
 
 </section>
@@ -1120,17 +1123,28 @@ function toggleDedication() {
   label.textContent = isOpen ? '편지 전체 읽기' : '접기';
 }
 
-// 다운로드 슬라이더
-let currentSlide = 0;
-const totalSlides = 3;
-// 슬라이더 제거됨
+// 수정이력 토글
+let changelogLoaded = false;
+function toggleChangelog() {
+  const content = document.getElementById('changelog-content');
+  const arrow = document.getElementById('changelog-arrow');
+  const isOpen = content.style.display === 'block';
+  content.style.display = isOpen ? 'none' : 'block';
+  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+  if (!isOpen && !changelogLoaded) {
+    changelogLoaded = true;
+    loadChangelog();
+  }
+}
+
 async function loadChangelog() {
+  const container = document.getElementById('changelog-content');
   try {
     const res = await fetch('changelog.txt?v=' + Date.now());
+    if (!res.ok) throw new Error();
     const text = await res.text();
     const lines = text.trim().split('\n').filter(l => l.trim());
-    const container = document.getElementById('changelog-content');
-    if (!lines.length) { container.innerHTML = '<p style="font-size:16px;color:#0a0a0a;font-style:normal;">아직 수정 이력이 없습니다.</p>'; return; }
+    if (!lines.length) { container.innerHTML = '<p style="font-size:16px;color:#ccc;padding:8px 0;">아직 수정 이력이 없습니다.</p>'; return; }
     const colors = { '수정': '#6a9a6a', '병기': '#6a7a9a', '반영': '#b8996a', '보류': '#666' };
     container.innerHTML = lines.map(line => {
       const parts = line.split('|');
@@ -1140,7 +1154,9 @@ async function loadChangelog() {
       const color = colors[type] || '#666';
       return '<div class="changelog-item"><span class="changelog-date">' + date + '</span><span class="changelog-type" style="border:1px solid ' + color + ';color:' + color + ';">' + (type || '—') + '</span><span class="changelog-desc">' + desc + '</span></div>';
     }).join('');
-  } catch (e) { document.getElementById('changelog-content').innerHTML = '<p style="font-size:16px;color:#0a0a0a;">불러올 수 없습니다.</p>'; }
+  } catch (e) {
+    container.innerHTML = '<p style="font-size:16px;color:#ccc;padding:8px 0;">수정 이력 파일을 불러올 수 없습니다.</p>';
+  }
 }
 
 // 카운터 (초기값 하드코딩 — html 업데이트해도 누적 유지)
@@ -1199,7 +1215,7 @@ function updateDisplay(count) {
   if (bar) setTimeout(() => { bar.style.width = Math.max(pct, 0.05) + '%'; }, 500);
 }
 loadCount();
-loadChangelog();
+// loadChangelog는 토글 클릭 시 호출됨
 
 // AI 탭
 function switchTab(name, e) {
