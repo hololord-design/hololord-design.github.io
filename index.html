@@ -235,10 +235,18 @@ body, body * {
   font-style: normal !important;
 }
 /* 어두운 배경 섹션 */
-#download, #download *,
-#author, #author * {
-  color: #ffffff !important;
-}
+/* 검정 배경 섹션 — 모든 텍스트 흰색 강제 */
+#download, #download * { color: #ffffff !important; }
+#author, #author * { color: #ffffff !important; }
+/* 단, 버튼은 예외 */
+#author .btn-white,
+#author .btn-white * { color: #0a0a0a !important; background:#fff !important; }
+#author .btn-outline,
+#author .btn-outline * { color: #ffffff !important; border-color:#888 !important; }
+/* 한울림 블록 — 검정 배경 안 모든 텍스트 흰색 */
+.review-dark-block, .review-dark-block * { color: #e0e0e0 !important; }
+.review-dark-block strong { color: #ffffff !important; }
+.review-dark-block span[style*="#b8996a"] { color: #b8996a !important; }
 /* 레이블 */
 .summary-part-label,
 .feat-label,
@@ -795,7 +803,7 @@ nav a { color: #0a0a0a !important; }
     <div style="border-top:1px solid #d8d0c0;margin-bottom:64px;"></div>
 
 <!-- 한울림 -->
-    <div style="margin-bottom:32px;padding:40px;background:#0a0a0a;border-radius:4px;">
+    <div class="review-dark-block" style="margin-bottom:32px;padding:40px;background:#0a0a0a;border-radius:4px;">
 
       <div style="font-size:15px;letter-spacing:0.4em;color:#b8996a;margin-bottom:24px;font-weight:700;">HANULLIM · 한울림이란</div>
       <p style="font-size:26px;font-weight:700;color:#f0ebe0;line-height:1.6;margin-bottom:20px;">
@@ -842,7 +850,7 @@ nav a { color: #0a0a0a !important; }
     </div>
 
     <!-- 감동 정의 -->
-    <div style="margin-bottom:32px;padding:40px;background:#0a0a0a;border-radius:4px;">
+    <div class="review-dark-block" style="margin-bottom:32px;padding:40px;background:#0a0a0a;border-radius:4px;">
       <div style="font-size:15px;letter-spacing:0.4em;color:#b8996a;margin-bottom:20px;font-weight:700;">GAMDONG · 감동(GamDong)이란</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
@@ -874,7 +882,7 @@ nav a { color: #0a0a0a !important; }
     </div>
 
     <!-- AGI 목적함수식 -->
-    <div style="margin-bottom:32px;padding:40px;background:#0a0a0a;border-radius:4px;">
+    <div class="review-dark-block" style="margin-bottom:32px;padding:40px;background:#0a0a0a;border-radius:4px;">
       <div style="font-size:15px;letter-spacing:0.4em;color:#b8996a;margin-bottom:20px;font-weight:700;">OBJECTIVE FUNCTION · AGI 목적함수의 전회(Pivot)</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
