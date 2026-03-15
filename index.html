@@ -332,7 +332,7 @@ nav a { color: #0a0a0a !important; }
     <div class="ded-inner" style="position:relative;">
       <div class="fox-wrap">
         
-        <div class="fox-name">허영<br>YoungsBooks</div>
+        
       </div>
       <div class="speech-bubble">
         <p class="ded-text">저는 처음에 모든 것을 깔아뭉개려 했습니다. 노자도, 공자도, 소크라테스도, 성경도 — 기존의 모든 사상을 비판하고 해체하려 했습니다. 그런데 하다 보니 그 속에서 진심으로 마음에 드는 것들이 있었습니다. 노자의 순환, 묵자의 겸애, 동학의 인내천, 성경의 안식년과 희년 — 이자를 받지 말라는 그 오래된 명령.</p>
@@ -415,81 +415,56 @@ nav a { color: #0a0a0a !important; }
 </section>
 
 <!-- 다운로드 + 엔드리스북 -->
-<section id="download">
-  <div class="dl-header" onclick="toggleDownload()">
-    <div class="dl-header-left">
-      
+<section id="download" style="background:#0a0a0a;border-bottom:2px solid #222;">
+
+  <!-- 블록 1: 다운로드 -->
+  <div style="padding:48px 40px;border-bottom:1px solid #333;">
+    <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#b8996a;margin-bottom:16px;">무료 다운로드</div>
+    <div style="font-size:20px;color:#fff;margin-bottom:32px;font-weight:400;">새벽, 그 새로운 개벽을 위하여</div>
+    
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:28px;">
       <div>
-        <div class="dl-header-label">무료 다운로드 · 살아있는 책</div>
-        <div class="dl-header-title">새벽, 그 새로운 개벽을 위하여</div>
+        <div style="font-size:11px;color:#888;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">Total Downloads</div>
+        <div style="display:flex;align-items:baseline;gap:5px;">
+          <span id="download-count" style="font-size:40px;font-weight:700;color:#b8996a;line-height:1;">0</span>
+          <span style="font-size:14px;color:#888;">회</span>
+        </div>
+        <div style="margin-top:10px;width:200px;height:3px;background:#333;border-radius:2px;">
+          <div id="progress-bar" style="height:100%;background:#b8996a;width:0%;transition:width 1.2s ease;border-radius:2px;min-width:3px;"></div>
+        </div>
+        <div style="font-size:11px;color:#555;margin-top:5px;">목표: 800,000,000 (전 세계 인구 10분의 1)</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="새벽_그새로운개벽을위하여.docx" download onclick="countDownload()" style="display:inline-block;padding:13px 26px;background:#b8996a;color:#fff;text-decoration:none;font-size:14px;">↓ 워드(.docx) 다운로드</a>
+        <a href="새벽_그새로운개벽을위하여.pdf" download style="display:inline-block;padding:13px 26px;background:none;color:#888;border:1px solid #444;text-decoration:none;font-size:14px;">↓ PDF (준비 중)</a>
       </div>
     </div>
-    <div class="dl-header-right">
-      <span class="dl-count-mini" id="dl-count-mini">— 회</span>
-      <span class="dl-arrow" id="dl-arrow">▾</span>
+    <div style="font-size:13px;color:#555;line-height:1.9;border-top:1px solid #222;padding-top:14px;">
+      비상업적 카피레프트 · 자유롭게 읽고, 나누고, 토론하세요<br>
+      정가 35,000원 · 친구와 토론하면 공짜 · 상업적 이용 문의: hololord@naver.com
     </div>
   </div>
-  <div id="dl-panel">
-    <div class="dl-nav">
-      <button onclick="slideGo(-1)">‹</button>
-      <div class="slide-dots-wrap" id="slide-dots"></div>
-      <button onclick="slideGo(1)">›</button>
-      <span class="dl-slide-label" id="slide-label"></span>
+
+  <!-- 블록 2: 살아있는 책 -->
+  <div style="padding:48px 40px;border-bottom:1px solid #333;">
+    <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#b8996a;margin-bottom:16px;">살아있는 책 · Endless Book</div>
+    <div style="font-size:20px;color:#fff;margin-bottom:28px;font-weight:400;">"이 책은 교정이 끝나지 않는 책입니다."</div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+      <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">틀린 것이 있다면 — 고쳐주세요</span></div>
+      <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">동의하지 않는다면 — 반박해주세요</span></div>
+      <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">부족하다면 — 채워주세요</span></div>
+      <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">더 명확한 개념어가 있다면 — 제시해주세요</span></div>
+      <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">띄어쓰기 하나라도 틀렸다면 — 알려주세요</span></div>
     </div>
-    <div class="slides-outer">
-      <div class="slides-wrap" id="slides-wrap">
-
-        <!-- 슬라이드 1: 다운로드 -->
-        <div class="slide-card">
-          <div class="slide-card-label">01 · 다운로드</div>
-          <div style="display:flex;gap:36px;align-items:center;flex-wrap:wrap;margin-bottom:28px;">
-            <div>
-              <div style="font-size:16px;color:#0a0a0a;letter-spacing:0.2em;text-transform:uppercase;font-family:'Noto Sans KR',sans-serif;margin-bottom:6px;">Total Downloads</div>
-              <div style="display:flex;align-items:baseline;gap:5px;">
-                <span id="download-count" style="font-family:'Noto Sans KR',sans-serif;font-size:16px;font-weight:300;color:#1a3a6a;line-height:1;">0</span>
-                <span style="font-size:16px;color:#0a0a0a;">회</span>
-              </div>
-              <div style="margin-top:10px;width:220px;height:3px;background:#222;border-radius:2px;">
-                <div id="progress-bar" style="height:100%;background:linear-gradient(90deg,#b8996a,#d4b483);width:0%;transition:width 1.2s ease;border-radius:2px;min-width:3px;"></div>
-              </div>
-              <div style="font-size:16px;color:#0a0a0a;margin-top:5px;">목표: 800,000,000 (전 세계 인구 10분의 1)</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <a href="새벽_그새로운개벽을위하여.docx" download onclick="countDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:#b8996a;color:#fff;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-size:16px;letter-spacing:0.1em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">↓ 워드(.docx) 다운로드</a>
-              <a href="새벽_그새로운개벽을위하여.pdf" download onclick="countDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:none;color:#0a0a0a;border:1px solid #444;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-size:16px;letter-spacing:0.1em;">↓ PDF (준비 중)</a>
-            </div>
-          </div>
-          <div style="font-size:16px;color:#0a0a0a;line-height:1.9;border-top:1px solid #1a1a1a;padding-top:14px;">
-            비상업적 카피레프트 · 자유롭게 읽고, 나누고, 토론하세요<br>
-            정가 35,000원 · <em>친구와 토론하면 공짜</em> · 상업적 이용 문의: hololord@naver.com
-          </div>
-        </div>
-
-        <!-- 슬라이드 2: 엔드리스 북 -->
-        <div class="slide-card">
-          <div class="slide-card-label">02 · 살아있는 책 · Endless Book</div>
-          <div class="endless-title">"이 책은 교정이 끝나지 않는 책입니다."</div>
-          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">틀린 것이 있다면 — 고쳐주세요</span></div>
-          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">동의하지 않는다면 — 반박해주세요</span></div>
-          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">부족하다면 — 채워주세요</span></div>
-          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">더 명확한 개념어가 있다면 — 제시해주세요</span></div>
-          <div class="endless-item"><span class="endless-star">✦</span><span class="endless-text">띄어쓰기 하나라도 틀렸다면 — 알려주세요</span></div>
-          <div style="margin-top:20px;font-size:16px;color:#0a0a0a;line-height:1.9;">
-            독자의 지적과 제안은 모두 검토합니다.<br>
-            반영 여부와 이유는 수정 이력에 공개합니다.
-          </div>
-          <a href="mailto:hololord@naver.com?subject=새벽 독자 의견" class="endless-mailto">의견 보내기 →</a>
-        </div>
-
-        <!-- 슬라이드 3: 수정 이력 -->
-        <div class="slide-card">
-          <div class="slide-card-label">03 · 수정 이력 · Changelog</div>
-          <div id="changelog-content"><div style="font-size:16px;color:#0a0a0a;">불러오는 중...</div></div>
-        </div>
-
-      </div>
-    </div>
+    <a href="mailto:hololord@naver.com?subject=새벽 독자 의견" style="display:inline-block;padding:11px 26px;border:1px solid #b8996a;color:#b8996a;text-decoration:none;font-size:14px;">의견 보내기 →</a>
   </div>
+
+  <!-- 블록 3: 수정 이력 -->
+  <div id="changelog-section" style="padding:48px 40px;">
+    <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#b8996a;margin-bottom:16px;">수정 이력 · Changelog</div>
+    <div id="changelog-content"><div style="font-size:14px;color:#555;">불러오는 중...</div></div>
+  </div>
+
 </section>
 
 <!-- 대표작 -->
@@ -695,41 +670,7 @@ function toggleDedication() {
 // 다운로드 슬라이더
 let currentSlide = 0;
 const totalSlides = 3;
-function toggleDownload() {
-  const panel = document.getElementById('dl-panel');
-  const arrow = document.getElementById('dl-arrow');
-  const isOpen = panel.style.display === 'block';
-  panel.style.display = isOpen ? 'none' : 'block';
-  arrow.classList.toggle('open', !isOpen);
-  if (!isOpen) { initSlider(); }
-}
-function initSlider() {
-  const dots = document.getElementById('slide-dots');
-  dots.innerHTML = '';
-  for (let i = 0; i < totalSlides; i++) {
-    const d = document.createElement('div');
-    d.className = 'slide-dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => goToSlide(i);
-    dots.appendChild(d);
-  }
-  updateSlider();
-  loadChangelog();
-}
-function slideGo(dir) {
-  currentSlide = Math.max(0, Math.min(totalSlides - 1, currentSlide + dir));
-  updateSlider();
-}
-function goToSlide(n) { currentSlide = n; updateSlider(); }
-function updateSlider() {
-  const wrap = document.getElementById('slides-wrap');
-  const cardWidth = wrap.children[0].offsetWidth + 22;
-  wrap.style.transform = 'translateX(-' + (currentSlide * cardWidth) + 'px)';
-  document.querySelectorAll('.slide-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === currentSlide);
-  });
-  const labels = ['다운로드', '살아있는 책', '수정 이력'];
-  document.getElementById('slide-label').textContent = (currentSlide + 1) + ' / ' + totalSlides + ' · ' + labels[currentSlide];
-}
+// 슬라이더 제거됨
 async function loadChangelog() {
   try {
     const res = await fetch('changelog.txt?v=' + Date.now());
@@ -776,6 +717,7 @@ function updateDisplay(count) {
   if (bar) setTimeout(() => { bar.style.width = Math.max(pct, 0.05) + '%'; }, 500);
 }
 loadCount();
+loadChangelog();
 
 // AI 탭
 function switchTab(name, e) {
