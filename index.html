@@ -198,10 +198,10 @@ nav {
 
 /* 저자 */
 #author { background:#0a0a0a; color:#fff; padding:100px 40px; text-align:center; }
-.author-label { font-size:16px; letter-spacing:0.3em; text-transform:uppercase; color:#0a0a0a; margin-bottom:16px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; }
-.author-heading { font-size:16px; font-weight:300; color:#fff; margin-bottom:28px; line-height:1.5; }
-.author-quote { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:16px; font-style:normal; color:#0a0a0a; max-width:520px; margin:0 auto 28px; line-height:1.9; }
-.author-sub { font-size:16px; color:#0a0a0a; max-width:420px; margin:0 auto 32px; line-height:2.0; }
+.author-label { font-size:16px; letter-spacing:0.3em; text-transform:uppercase; color:#b8996a; margin-bottom:16px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; }
+.author-heading { font-size:26px; font-weight:700; color:#fff; margin-bottom:28px; line-height:1.6; }
+.author-quote { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-style:italic; color:#f0ebe0; max-width:520px; margin:0 auto 28px; line-height:1.9; font-weight:600; }
+.author-sub { font-size:17px; color:#ccc; max-width:420px; margin:0 auto 32px; line-height:2.0; font-weight:600; }
 .btn-white { padding:13px 32px; background:#fff; color:#0a0a0a; border:none; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:16px; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; margin:5px; transition:opacity 0.2s; }
 .btn-white:hover { opacity:0.85; }
 .btn-outline { padding:13px 32px; background:none; color:#fff; border:2px solid #555; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:16px; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; margin:5px; transition:all 0.2s; }
@@ -446,7 +446,7 @@ nav a { color: #0a0a0a !important; }
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <a href="새벽_그새로운개벽을위하여.pdf" download onclick="countDownload()" style="display:inline-block;padding:14px 30px;background:#b8996a;color:#fff !important;text-decoration:none;font-size:15px;font-weight:700;letter-spacing:0.05em;margin:4px;">↓ PDF 다운로드</a>
-        <a href="새벽_그새로운개벽을위하여.docx" download style="display:inline-block;padding:14px 30px;background:none;color:#b8996a !important;border:2px solid #b8996a;text-decoration:none;font-size:15px;font-weight:700;letter-spacing:0.05em;margin:4px;">↓ 워드(.docx) 다운로드</a>
+        <a href="새벽_그새로운개벽을위하여.docx" download onclick="countDownload()" style="display:inline-block;padding:14px 30px;background:none;color:#b8996a !important;border:2px solid #b8996a;text-decoration:none;font-size:15px;font-weight:700;letter-spacing:0.05em;margin:4px;">↓ 워드(.docx) 다운로드</a>
         <div style="margin-top:28px;color:#aaa;font-size:14px;line-height:2.2;text-align:left;max-width:520px;margin-left:auto;margin-right:auto;">
           <div style="margin-bottom:6px;">📄 <strong style="color:#ddd;">PDF</strong> — 스마트폰·PC·태블릿 어디서나 바로 읽기. 프린트하면 종이책으로.</div>
           <div style="margin-bottom:18px;">📝 <strong style="color:#ddd;">워드(.docx)</strong> — 글자 크기·폰트를 내 눈에 맞게 자유롭게 바꿔서 읽기.</div>
@@ -901,22 +901,52 @@ async function loadChangelog() {
   } catch (e) { document.getElementById('changelog-content').innerHTML = '<p style="font-size:16px;color:#0a0a0a;">불러올 수 없습니다.</p>'; }
 }
 
-// 카운터
+// 카운터 (다중 API 시도 + 로컬 백업)
 const NS = 'youngsbooks2025';
 const KEY = 'saebuk-v1';
-async function loadCount() {
-  try {
-    const res = await fetch('https://api.countapi.xyz/get/' + NS + '/' + KEY);
-    const data = await res.json();
-    updateDisplay(data.value || 0);
-  } catch (e) { updateDisplay(0); }
+const APIS = [
+  'https://api.countapi.xyz',
+  'https://api.countapi.dev'
+];
+
+async function tryFetch(path) {
+  for (const base of APIS) {
+    try {
+      const res = await fetch(base + path);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && typeof data.value === 'number') return data.value;
+      }
+    } catch(e) {}
+  }
+  return null;
 }
+
+async function loadCount() {
+  // 로컬 저장값 먼저 표시
+  const local = parseInt(localStorage.getItem('dl_count') || '0');
+  if (local > 0) updateDisplay(local);
+  // API 시도
+  const val = await tryFetch('/get/' + NS + '/' + KEY);
+  if (val !== null) {
+    const display = Math.max(val, local);
+    updateDisplay(display);
+    localStorage.setItem('dl_count', display);
+  }
+}
+
 async function countDownload() {
-  try {
-    const res = await fetch('https://api.countapi.xyz/hit/' + NS + '/' + KEY);
-    const data = await res.json();
-    updateDisplay(data.value || 0);
-  } catch (e) {}
+  // 로컬 즉시 증가
+  const local = parseInt(localStorage.getItem('dl_count') || '0') + 1;
+  localStorage.setItem('dl_count', local);
+  updateDisplay(local);
+  // API 시도 (백그라운드)
+  const val = await tryFetch('/hit/' + NS + '/' + KEY);
+  if (val !== null) {
+    const display = Math.max(val, local);
+    updateDisplay(display);
+    localStorage.setItem('dl_count', display);
+  }
 }
 function updateDisplay(count) {
   const el = document.getElementById('download-count');
