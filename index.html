@@ -289,9 +289,12 @@ nav a { color: #0a0a0a !important; }
 #featured *, #books *, #summaries *, #translation * {
   font-weight: 700 !important;
 }
-/* 헌정 편지 토글 */
+/* 헌정 편지 토글 — 순수 CSS */
 #ded-body { display: none !important; }
-#ded-body.ded-open { display: block !important; }
+#ded-toggle:checked ~ #ded-body { display: block !important; }
+#ded-toggle:checked ~ .ded-inner #ded-arrow { transform: rotate(180deg); }
+#ded-toggle:checked ~ .ded-inner #ded-label::before { content: ''; }
+#ded-toggle:checked + .ded-inner #ded-arrow { transform: rotate(180deg); }
 /* 어두운 배경은 그대로 */
 #download * { font-weight: 400 !important; }
 /* 다운로드 라벨만 굵게 */
@@ -341,6 +344,7 @@ nav a { color: #0a0a0a !important; }
 
 <!-- 헌정 편지 -->
 <section id="dedication">
+  <input type="checkbox" id="ded-toggle" style="display:none;">
   <div class="ded-inner">
     <div class="ded-label">이 책을 꼭 전하고 싶은 분들께</div>
     <div class="ded-recipients">
@@ -349,10 +353,10 @@ nav a { color: #0a0a0a !important; }
     <div class="ded-preview">
       저는 처음에 모든 것을 깔아뭉개려 했습니다. 노자도, 공자도, 소크라테스도, 성경도 — 기존의 모든 사상을 비판하고 해체하려 했습니다...
     </div>
-    <div class="ded-btn" onclick="toggleDedication()">
+    <label for="ded-toggle" class="ded-btn">
       <span id="ded-arrow" style="display:inline-block;transition:transform 0.3s;">▾</span>
       <span id="ded-label">편지 전체 읽기</span>
-    </div>
+    </label>
   </div>
 
   <div id="ded-body">
