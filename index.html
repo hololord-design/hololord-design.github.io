@@ -1073,9 +1073,10 @@ async function loadChangelog() {
   } catch (e) { document.getElementById('changelog-content').innerHTML = '<p style="font-size:16px;color:#0a0a0a;">불러올 수 없습니다.</p>'; }
 }
 
-// 카운터 (다중 API 시도 + 로컬 백업)
+// 카운터 (초기값 하드코딩 — html 업데이트해도 누적 유지)
 const NS = 'youngsbooks2025';
 const KEY = 'saebuk-v1';
+const BASE_COUNT = 0; // ← 업데이트 시 이 숫자를 현재 카운트로 바꿔주세요
 const APIS = [
   'https://api.countapi.xyz',
   'https://api.countapi.dev'
@@ -1095,29 +1096,27 @@ async function tryFetch(path) {
 }
 
 async function loadCount() {
-  // 로컬 저장값 먼저 표시
   const local = parseInt(localStorage.getItem('dl_count') || '0');
-  if (local > 0) updateDisplay(local);
-  // API 시도
+  const display = Math.max(local, BASE_COUNT);
+  if (display > 0) updateDisplay(display);
   const val = await tryFetch('/get/' + NS + '/' + KEY);
   if (val !== null) {
-    const display = Math.max(val, local);
-    updateDisplay(display);
-    localStorage.setItem('dl_count', display);
+    const final = Math.max(val, local, BASE_COUNT);
+    updateDisplay(final);
+    localStorage.setItem('dl_count', final);
   }
 }
 
 async function countDownload() {
-  // 로컬 즉시 증가
   const local = parseInt(localStorage.getItem('dl_count') || '0') + 1;
-  localStorage.setItem('dl_count', local);
-  updateDisplay(local);
-  // API 시도 (백그라운드)
+  const display = Math.max(local, BASE_COUNT);
+  localStorage.setItem('dl_count', display);
+  updateDisplay(display);
   const val = await tryFetch('/hit/' + NS + '/' + KEY);
   if (val !== null) {
-    const display = Math.max(val, local);
-    updateDisplay(display);
-    localStorage.setItem('dl_count', display);
+    const final = Math.max(val, display);
+    updateDisplay(final);
+    localStorage.setItem('dl_count', final);
   }
 }
 function updateDisplay(count) {
