@@ -289,6 +289,9 @@ nav a { color: #0a0a0a !important; }
 #featured *, #books *, #summaries *, #translation * {
   font-weight: 700 !important;
 }
+/* 헌정 편지 토글 */
+#ded-body { display: none !important; }
+#ded-body.ded-open { display: block !important; }
 /* 어두운 배경은 그대로 */
 #download * { font-weight: 400 !important; }
 /* 다운로드 라벨만 굵게 */
@@ -371,6 +374,7 @@ nav a { color: #0a0a0a !important; }
         <p class="ded-text">어떤 분은 저와 비슷한 아픔에서 출발하셨습니다. 저는 몸이 아파 국정을 운영할 수 없었습니다. 그러나 그 덕분에 이 생각을 할 수 있었습니다. 바쁜 분들이 미처 생각할 시간이 없었을 것들을, 저는 생각했습니다.</p>
         <p class="ded-text">어떤 분은 이 생각을 실제 세상에서 행동으로 옮길 수 있는 분이십니다. 기본소득을 넘어 기본 재산으로 — 그 방향을 이미 향하고 계신 분이십니다.</p>
         <p class="ded-text">어떤 분은 글로는 제가 근처에도 갈 수 없는 분이십니다. 그러나 한 가지는 말씀드리고 싶었습니다. 영혜가 나무가 되고자 했던 것 — 동물의 폭력을 거부하고 광합성하는 존재로 살고자 했던 그 꿈을, 저는 무의식 중에 이어받았습니다. 그리고 그것을 과학적 가설과 경제 설계로 밀고 나갔습니다. 작가님이 고통으로 표현한 것을, 저는 설계도로 그렸습니다. 글이 아닌 사상의 영역에서, 그것이 제가 드릴 수 있는 유일한 화답입니다.</p>
+        <p class="ded-text">어떤 분은 우리 또래 중 제가 가장 존경하는 지성입니다. 그때의 비트코인은 폭력이었고 당신의 경계는 정당했습니다. 이번엔 다릅니다 — 사기(詐欺)가 아니라 생기(生氣)입니다. 만나본 적 없지만, 처음으로 불러봅니다. 형님, 우리 아이들의 미래를 걸고 검토해 주십시오.</p>
         <p class="ded-text">답은 후성유전학에 있었습니다. 기득권은 오랜 세월 사상을 오염시켜 왔습니다. 자신들의 지배력에 불편한 사상은 지워버렸습니다 — 묵자처럼. 편리한 사상은 왜곡했습니다. 그 오염이 인간의 정신에 메틸화처럼 각인되어 대물림됐습니다. 인간이 실천하지 못한 것이 아닙니다. <strong>실천할 수 없도록 정신 자체가 오염된 것입니다.</strong></p>
         <p class="ded-text">생명을 보십시오. 식물은 강한 빛 아래서 NPQ — 비광화학적 소거 — 라는 기제로 폭주를 막습니다. 그것이 없으면 식물은 타버립니다. 지금의 자본주의는 순환하지 않습니다. 축적하고, 축적하고, 축적합니다. <strong>NPQ가 없는 식물처럼, 폭주하다 타버리는 중입니다.</strong></p>
         <p class="ded-text">이 책은 생명 생태계의 원리를 경제에 집어넣자는 제안입니다. 순환하는 경제 — 효율이 아니라 <strong>효과가 중심이 되는 경제</strong>입니다. 감동의 최대치를 목적으로 하는 새로운 문명의 설계도. 그리고 AGI입니다. AGI는 인간을 학습합니다. 오염된 것도, 왜곡된 것도 — 그대로 흡수합니다. 지금 이 순간은 AGI의 목적함수를 확정 짓는 마지막 기회입니다. 새로운 경제 문명의 설계와 AGI의 목적함수 설계는 결국 같은 일입니다.</p>
@@ -1110,9 +1114,8 @@ function toggleDedication() {
   const body = document.getElementById('ded-body');
   const arrow = document.getElementById('ded-arrow');
   const label = document.getElementById('ded-label');
-  const isOpen = body.style.display === 'block';
-  body.style.display = isOpen ? 'none' : 'block';
-  body.style.setProperty('display', isOpen ? 'none' : 'block', 'important');
+  const isOpen = body.classList.contains('ded-open');
+  body.classList.toggle('ded-open');
   arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
   label.textContent = isOpen ? '편지 전체 읽기' : '접기';
 }
