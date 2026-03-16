@@ -493,7 +493,7 @@ nav a { color: #0a0a0a !important; }
     </div>
     <div style="font-size:16px;color:#ccc;line-height:1.9;border-top:1px solid #222;padding-top:14px;">
       비상업적 카피레프트 · 자유롭게 읽고, 나누고, 토론하세요<br>
-      정가 35,000원 · 친구와 토론하면 공짜 · 상업적 이용 문의: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="690106050605061b0d2907081f0c1b470a0604">[email&#160;protected]</a>
+      정가 35,000원 · 친구와 토론하면 공짜 · 상업적 이용 문의: <a href="mailto:hololord@naver.com" style="color:#ccc;">hololord@naver.com</a>
     </div>
   </div>
 
@@ -508,7 +508,7 @@ nav a { color: #0a0a0a !important; }
       <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">더 명확한 개념어가 있다면 — 제시해주세요</span></div>
       <div style="display:flex;gap:14px;"><span style="color:#b8996a;flex-shrink:0;">✦</span><span style="font-size:15px;color:#ddd;">띄어쓰기 하나라도 틀렸다면 — 알려주세요</span></div>
     </div>
-    <a href="/cdn-cgi/l/email-protection#d6beb9bab9bab9a4b296b8b7a0b3a4f8b5b9bbe9a5a3b4bcb3b5a2eb3a555e3d646bf63d59533a4846f63a4b4e3c647a" style="display:inline-block;padding:11px 26px;border:1px solid #b8996a;color:#b8996a;text-decoration:none;font-size:16px;">의견 보내기 →</a>
+    <a href="mailto:hololord@naver.com" style="display:inline-block;padding:11px 26px;border:1px solid #b8996a;color:#b8996a;text-decoration:none;font-size:16px;">의견 보내기 →</a>
   </div>
 
   <!-- 블록 3: 수정 이력 -->
@@ -1069,7 +1069,7 @@ nav a { color: #0a0a0a !important; }
       <p class="trans-text">어색한 표현, 오역, 철학적 뉘앙스가 손상된 부분을 발견하셨다면 — 부디 알려주세요.</p>
       <p class="trans-text">이 사상에 공감하고 해당 언어권에서 함께 전파해주실 번역 협력자를 찾고 있습니다. <strong>번역자 이름을 공식 크레딧으로 표기</strong>하며, <strong>수익 배분은 별도 협의</strong>합니다.</p>
       <div class="trans-highlight">"인간의 언어만큼 다양한 방식으로 이 생각이 퍼져나가길 바랍니다."</div>
-      <a href="/cdn-cgi/l/email-protection#274f484b484b4855436749465142550944484a185452454d4244531acc95afcbb08a07cabfb6cc878207cc8b9fcbbabf" style="padding:13px 32px;background:#0a0a0a;color:#fff;text-decoration:none;display:inline-block;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;font-size:16px;letter-spacing:0.15em;">번역 협력 문의하기</a>
+      <a href="mailto:hololord@naver.com" style="padding:13px 32px;background:#0a0a0a;color:#fff !important;text-decoration:none;display:inline-block;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;font-size:16px;letter-spacing:0.15em;">번역 협력 문의하기</a>
     </div>
   </div>
 </section>
@@ -1082,7 +1082,7 @@ nav a { color: #0a0a0a !important; }
     <p class="author-quote">"이 책은 결론이 아니라 초대장이다.<br>가장 중요한 대화는 아직 시작되지 않았다."</p>
     <p class="author-sub">동의해도 좋고, 반박해도 좋습니다.<br>저자에게 직접 물어보세요.</p>
     <div>
-      <a href="/cdn-cgi/l/email-protection#7e1611121112110c1a3e101f081b0c501d1113" class="btn-white" style="color:#0a0a0a !important;background:#fff !important;">이메일 보내기</a>
+      <a href="mailto:hololord@naver.com" class="btn-white" style="color:#0a0a0a !important;background:#fff !important;">이메일 보내기</a>
       <a href="#books" class="btn-outline" style="color:#fff !important;border-color:#888 !important;">서재 보기</a>
     </div>
   </div>
@@ -1163,52 +1163,46 @@ async function loadChangelog() {
   }
 }
 
-// 카운터 (초기값 하드코딩 — html 업데이트해도 누적 유지)
-const NS = 'youngsbooks2025';
-const KEY = 'saebuk-v1';
-const BASE_COUNT = 0; // ← 업데이트 시 이 숫자를 현재 카운트로 바꿔주세요
-const APIS = [
-  'https://api.countapi.xyz',
-  'https://api.countapi.dev'
-];
-
-async function tryFetch(path) {
-  for (const base of APIS) {
-    try {
-      const res = await fetch(base + path);
-      if (res.ok) {
-        const data = await res.json();
-        if (data && typeof data.value === 'number') return data.value;
-      }
-    } catch(e) {}
-  }
-  return null;
-}
+// 카운터
+// BASE_COUNT: 파일 교체 시 이전 카운트를 여기에 입력하면 누적 유지됩니다
+const BASE_COUNT = 0;
+const STORAGE_KEY = 'saebuk_dl_v2';
+const COUNTER_GET = 'https://api.counterapi.dev/v1/youngsbooks/saebuk/get';
+const COUNTER_HIT = 'https://api.counterapi.dev/v1/youngsbooks/saebuk/up';
 
 async function loadCount() {
-  const local = parseInt(localStorage.getItem('dl_count') || '0');
-  const display = Math.max(local, BASE_COUNT);
-  if (display > 0) updateDisplay(display);
-  const val = await tryFetch('/get/' + NS + '/' + KEY);
-  if (val !== null) {
-    const final = Math.max(val, local, BASE_COUNT);
-    updateDisplay(final);
-    localStorage.setItem('dl_count', final);
-  }
+  const local = parseInt(localStorage.getItem(STORAGE_KEY) || '0');
+  const initial = Math.max(local, BASE_COUNT);
+  if (initial > 0) updateDisplay(initial);
+  try {
+    const res = await fetch(COUNTER_GET);
+    if (res.ok) {
+      const data = await res.json();
+      const count = data.count || data.value || 0;
+      const final = Math.max(count, initial);
+      updateDisplay(final);
+      localStorage.setItem(STORAGE_KEY, final);
+    }
+  } catch(e) {}
 }
 
 async function countDownload() {
-  const local = parseInt(localStorage.getItem('dl_count') || '0') + 1;
+  const local = parseInt(localStorage.getItem(STORAGE_KEY) || '0') + 1;
   const display = Math.max(local, BASE_COUNT);
-  localStorage.setItem('dl_count', display);
+  localStorage.setItem(STORAGE_KEY, display);
   updateDisplay(display);
-  const val = await tryFetch('/hit/' + NS + '/' + KEY);
-  if (val !== null) {
-    const final = Math.max(val, display);
-    updateDisplay(final);
-    localStorage.setItem('dl_count', final);
-  }
+  try {
+    const res = await fetch(COUNTER_HIT);
+    if (res.ok) {
+      const data = await res.json();
+      const count = data.count || data.value || 0;
+      const final = Math.max(count, display);
+      updateDisplay(final);
+      localStorage.setItem(STORAGE_KEY, final);
+    }
+  } catch(e) {}
 }
+
 function updateDisplay(count) {
   const el = document.getElementById('download-count');
   const mini = document.getElementById('dl-count-mini');
