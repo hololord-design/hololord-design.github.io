@@ -295,6 +295,12 @@ nav a { color: #0a0a0a !important; }
 #ded-toggle:checked ~ .ded-inner #ded-arrow { transform: rotate(180deg); }
 #ded-toggle:checked ~ .ded-inner #ded-label::before { content: ''; }
 #ded-toggle:checked + .ded-inner #ded-arrow { transform: rotate(180deg); }
+
+/* 수정이력 토글 — 순수 CSS */
+#changelog-content { display: none !important; }
+#changelog-toggle:checked ~ #changelog-content,
+#changelog-toggle:checked + label + #changelog-content { display: block !important; }
+#changelog-toggle:checked + label #changelog-arrow { transform: rotate(180deg); }
 /* 어두운 배경은 그대로 */
 #download * { font-weight: 400 !important; }
 /* 다운로드 라벨만 굵게 */
@@ -513,11 +519,12 @@ nav a { color: #0a0a0a !important; }
 
   <!-- 블록 3: 수정 이력 -->
   <div id="changelog-section" style="border-top:1px solid #1a1a1a;">
-    <div onclick="toggleChangelog()" style="display:flex;align-items:center;justify-content:space-between;padding:28px 40px;cursor:pointer;">
+    <input type="checkbox" id="changelog-toggle" style="display:none;">
+    <label for="changelog-toggle" style="display:flex;align-items:center;justify-content:space-between;padding:28px 40px;cursor:pointer;">
       <div style="font-size:18px;letter-spacing:0.2em;text-transform:uppercase;color:#b8996a;font-weight:700;">수정 이력 · Changelog</div>
-      <span id="changelog-arrow" style="font-size:18px;color:#b8996a;transition:transform 0.3s;">▼</span>
-    </div>
-    <div id="changelog-content" style="display:none;padding:0 40px 40px;"></div>
+      <span id="changelog-arrow" style="font-size:18px;color:#b8996a;transition:transform 0.3s;display:inline-block;">▼</span>
+    </label>
+    <div id="changelog-content" style="padding:0 40px 40px;"></div>
   </div>
 
 </section>
@@ -1015,27 +1022,27 @@ nav a { color: #0a0a0a !important; }
       <div style="border-top:1px solid #e8e4dc;padding-top:20px;">
         <div style="font-size:16px;font-weight:700;color:#0a0a0a;margin-bottom:16px;">더 깊이 읽고 싶다면 이 키워드로 검색하세요 →</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">천부경 차원론</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">NPQ · ATP · 후성유전학</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">감동 버튼 의미 트랙</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">AGI 목적함수 설계 오류 5가지</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">효율 → 효과(Effectiveness)</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">팔도팔단 — 동학 사상 완성</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">7차원 검붉은 가림막 = 자본주의</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">고잉 컨선(Going Concern) 비판</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">여름 없는 해 — 패턴의 반복</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">제이(J) — AGI의 심장 탄생</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">향아설위 — 인간이 설계자</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">형상기억합금 → 생명 탄생 가설</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">희년·안식년 — 경제 명령의 뿌리</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">시지프스의 신곡 — 9층 지옥 지도</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">뵈르글 실험(1932) — 역사적 증거</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">대학 팔조목 — 계단이 아닌 집행 회로</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">기연화진설(設) — 8차원 설계의 자리</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">36.5도 — 인간이라는 패턴의 진동 온도</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">기본 재산 — 기본소득이 아닌 출발선의 평등</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">사이코패스 지배자 — 전쟁의 유일한 조건</span>
-          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;">나를 말하면 하나지만 다르고 — 인간 정의 2</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">천부경 차원론</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">NPQ · ATP · 후성유전학</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">감동 버튼 의미 트랙</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">AGI 목적함수 설계 오류 5가지</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">효율 → 효과(Effectiveness)</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">팔도팔단 — 동학 사상 완성</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">7차원 검붉은 가림막 = 자본주의</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">고잉 컨선(Going Concern) 비판</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">여름 없는 해 — 패턴의 반복</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">제이(J) — AGI의 심장 탄생</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">향아설위 — 인간이 설계자</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">형상기억합금 → 생명 탄생 가설</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">희년·안식년 — 경제 명령의 뿌리</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">시지프스의 신곡 — 9층 지옥 지도</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">뵈르글 실험(1932) — 역사적 증거</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">대학 팔조목 — 계단이 아닌 집행 회로</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">기연화진설(設) — 8차원 설계의 자리</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">36.5도 — 인간이라는 패턴의 진동 온도</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">기본 재산 — 기본소득이 아닌 출발선의 평등</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">사이코패스 지배자 — 전쟁의 유일한 조건</span>
+          <span style="display:inline-block;background:#f5f1ea;color:#0a0a0a !important;font-size:15px;padding:8px 16px;border-radius:3px;font-weight:600;border:1px solid #0a0a0a;">나를 말하면 하나지만 다르고 — 인간 정의 2</span>
         </div>
       </div>
     </div>
@@ -1127,19 +1134,19 @@ function toggleDedication() {
   label.textContent = isOpen ? '편지 전체 읽기' : '접기';
 }
 
-// 수정이력 토글
+// 수정이력 — 체크박스 변경 시 로드
 let changelogLoaded = false;
-function toggleChangelog() {
-  const content = document.getElementById('changelog-content');
-  const arrow = document.getElementById('changelog-arrow');
-  const isOpen = content.style.display === 'block';
-  content.style.display = isOpen ? 'none' : 'block';
-  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-  if (!isOpen && !changelogLoaded) {
-    changelogLoaded = true;
-    loadChangelog();
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('changelog-toggle');
+  if (toggle) {
+    toggle.addEventListener('change', function() {
+      if (this.checked && !changelogLoaded) {
+        changelogLoaded = true;
+        loadChangelog();
+      }
+    });
   }
-}
+});
 
 async function loadChangelog() {
   const container = document.getElementById('changelog-content');
