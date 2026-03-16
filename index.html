@@ -819,7 +819,7 @@ nav a { color: #0a0a0a !important; }
 
       <div style="display:grid;gap:16px;margin-bottom:48px;">
 
-        <div style="border:1px solid #d8d0c0;padding:24px 28px;background:#fff;">
+        <div style="border:1px solid #0a0a0a;padding:24px 28px;background:#fff;">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
             <div style="font-size:16px;font-weight:700;color:#0a0a0a;">유발 하라리 · 《사피엔스》</div>
             <div style="font-size:14px;color:#888;font-weight:600;">인간이란 무엇인가 — 과거로 소급</div>
@@ -827,7 +827,7 @@ nav a { color: #0a0a0a !important; }
           <p style="font-size:16px;line-height:1.9;color:#333;margin:0;font-weight:600;">하라리는 인간이 어떻게 지금에 이르렀는지를 탁월하게 설명한다. 그러나 그것이 앞으로 어떠해야 하는지는 묻지 않는다. 진단이 있고 설계가 없다. 이 책은 그 다음 질문에서 시작한다.</p>
         </div>
 
-        <div style="border:1px solid #d8d0c0;padding:24px 28px;background:#fff;">
+        <div style="border:1px solid #0a0a0a;padding:24px 28px;background:#fff;">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
             <div style="font-size:16px;font-weight:700;color:#0a0a0a;">리처드 도킨스 · 《이기적 유전자》</div>
             <div style="font-size:14px;color:#888;font-weight:600;">이기성의 근원 — 숙명론으로 귀착</div>
@@ -835,7 +835,7 @@ nav a { color: #0a0a0a !important; }
           <p style="font-size:16px;line-height:1.9;color:#333;margin:0;font-weight:600;">도킨스는 인간의 이기성이 유전자 차원의 필연임을 증명한다. 그리고 거기서 멈춘다. 이 책은 그 이기성이 후성유전학적 환경의 산물이며, 환경을 바꾸면 발현이 바뀐다고 주장한다. 숙명이 아니라 설계의 문제다.</p>
         </div>
 
-        <div style="border:1px solid #d8d0c0;padding:24px 28px;background:#fff;">
+        <div style="border:1px solid #0a0a0a;padding:24px 28px;background:#fff;">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
             <div style="font-size:16px;font-weight:700;color:#0a0a0a;">토마 피케티 · 《21세기 자본》</div>
             <div style="font-size:14px;color:#888;font-weight:600;">불평등의 수학 — 세금 개혁에 멈춤</div>
@@ -843,7 +843,7 @@ nav a { color: #0a0a0a !important; }
           <p style="font-size:16px;line-height:1.9;color:#333;margin:0;font-weight:600;">피케티는 불평등의 구조를 수학적으로 증명하고 누진세를 처방으로 제시한다. 이 책은 세금 구조를 고치는 것이 아니라 화폐의 정의 자체를 다시 쓰고, AGI 목적함수와 경제 설계를 동시에 재편하는 경로를 제안한다. 처방의 층위가 다르다.</p>
         </div>
 
-        <div style="border:1px solid #d8d0c0;padding:24px 28px;background:#fff;">
+        <div style="border:1px solid #0a0a0a;padding:24px 28px;background:#fff;">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
             <div style="font-size:16px;font-weight:700;color:#0a0a0a;">닉 보스트롬 · AGI 위협론</div>
             <div style="font-size:14px;color:#888;font-weight:600;">공포의 지도 — 해법 없이 경보만</div>
@@ -851,7 +851,7 @@ nav a { color: #0a0a0a !important; }
           <p style="font-size:16px;line-height:1.9;color:#333;margin:0;font-weight:600;">보스트롬은 AGI가 인류의 위협이 될 수 있다는 경고를 철학적으로 정교하게 구성한다. 이 책은 그 경고를 받아들이면서, AGI를 위협이 아닌 공명의 도구로 만드는 목적함수 설계도를 제시한다. 경보에서 설계로의 전진이다.</p>
         </div>
 
-        <div style="border:1px solid #d8d0c0;padding:24px 28px;background:#fff;">
+        <div style="border:1px solid #0a0a0a;padding:24px 28px;background:#fff;">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
             <div style="font-size:16px;font-weight:700;color:#0a0a0a;">노자 · 공자 · 부처 — 동양 사상의 거인들</div>
             <div style="font-size:14px;color:#888;font-weight:600;">방향을 말했지만 엔진을 주지 않았다</div>
@@ -1170,25 +1170,22 @@ async function loadChangelog() {
   }
 }
 
-// 카운터
-// BASE_COUNT: 파일 교체 시 이전 카운트를 여기에 입력하면 누적 유지됩니다
+// 카운터 — Google Apps Script 백엔드 (진짜 누적, GitHub Pages 완벽 호환)
 const BASE_COUNT = 0;
-const STORAGE_KEY = 'saebuk_dl_v2';
-const COUNTER_GET = 'https://api.counterapi.dev/v1/youngsbooks/saebuk/get';
-const COUNTER_HIT = 'https://api.counterapi.dev/v1/youngsbooks/saebuk/up';
+const STORAGE_KEY = 'saebuk_dl_v3';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyEDWcmDA-okPmzsSWZSOQw5gB17Md9QH2SAlz0YeewDf44uOdxIcMrLYB3PKTnDCFe/exec';
 
 async function loadCount() {
   const local = parseInt(localStorage.getItem(STORAGE_KEY) || '0');
   const initial = Math.max(local, BASE_COUNT);
   if (initial > 0) updateDisplay(initial);
   try {
-    const res = await fetch(COUNTER_GET);
+    const res = await fetch(GAS_URL);
     if (res.ok) {
       const data = await res.json();
-      const count = data.count || data.value || 0;
-      const final = Math.max(count, initial);
-      updateDisplay(final);
-      localStorage.setItem(STORAGE_KEY, final);
+      const count = Math.max(data.count || 0, initial);
+      updateDisplay(count);
+      localStorage.setItem(STORAGE_KEY, count);
     }
   } catch(e) {}
 }
@@ -1199,13 +1196,12 @@ async function countDownload() {
   localStorage.setItem(STORAGE_KEY, display);
   updateDisplay(display);
   try {
-    const res = await fetch(COUNTER_HIT);
+    const res = await fetch(GAS_URL + '?action=hit');
     if (res.ok) {
       const data = await res.json();
-      const count = data.count || data.value || 0;
-      const final = Math.max(count, display);
-      updateDisplay(final);
-      localStorage.setItem(STORAGE_KEY, final);
+      const count = Math.max(data.count || 0, display);
+      updateDisplay(count);
+      localStorage.setItem(STORAGE_KEY, count);
     }
   } catch(e) {}
 }
