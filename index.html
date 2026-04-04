@@ -1,165 +1,149 @@
-<html lang="ko"><head>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
     <meta charset="UTF-8">
-    <title>Youngs Books - 홀로그램 관리실</title>
+    <meta name="naver-site-verification" content="3a469a7ea652d494b96bfd358da71a59456d6a0e" />
+    <title>Youngs Books - 한울림 성전</title>
     <style>
-        body { margin: 0; font-family: sans-serif; background: #fff; font-size: 13pt; }
-        #container { display: flex; height: 100vh; }
-        #preview { width: 55%; height: 100%; border-right: 3px solid #000; padding: 20px; overflow-y: auto; box-sizing: border-box; }
-        #admin { width: 45%; height: 100%; background: #f4f4f4; padding: 20px; overflow-y: auto; box-sizing: border-box; }
-
-        /* 3분할 홀로그램 엔진 (스와이프 및 좌우 이동) */
-        .stage { width: 100%; height: 400px; border: 5px solid #000; overflow: hidden; position: relative; background: #000; cursor: pointer; }
-        .holo-img { 
-            width: 300%; height: 100%; /* 화면의 3배 크기로 설정 (양 날개) */
-            object-fit: cover; position: absolute; left: -100%; /* 가운데 1/3만 보이게 설정 */
-            opacity: 0; transition: opacity 2s, transform 15.5s linear; 
+        /* 1. 기본 배경 설정 */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #fff; 
+            font-family: 'Malgun Gothic', sans-serif; 
+            text-align: center; 
+            overflow-x: hidden; 
         }
-        .active { opacity: 1; transform: translateX(10%); } /* 살짝 좌우로 움직이는 효과 */
-        .paused { animation-play-state: paused !important; transition: none !important; }
 
-        .section { margin-top: 15px; padding: 15px; border: 2px solid #000; background: #fff; }
-        .status-tag { display: inline-block; padding: 5px 10px; background: #d00; color: #fff; font-weight: bold; margin-bottom: 10px; }
-        
-        label { display: block; margin-top: 10px; font-weight: bold; color: #333; }
-        textarea, input { width: 100%; padding: 8px; margin-top: 5px; border: 2px solid #000; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; font-size: 14pt; font-weight: bold; margin-top: 10px; cursor: pointer; background: #000; color: #fff; border: none; }
-        
-        .guest-item { border-bottom: 1px solid #ddd; padding: 10px 0; position: relative; }
-        .admin-del { color: red; cursor: pointer; font-weight: bold; margin-left: 10px; display: none; }
+        /* 2. 3분할 홀로그램 엔진 (15.5초) */
+        @keyframes holoFlow {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(5%); }
+            100% { transform: translateX(0); }
+        }
+
+        .stage {
+            width: 100%;
+            height: 500px; /* PC/폰 맞춤형 높이 */
+            border-bottom: 10px solid #000;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .holo-img {
+            width: 300%; /* 양날개 구현을 위한 3배 크기 */
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            left: -100%; /* 중앙 배치 */
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .active {
+            opacity: 1;
+            animation: holoFlow 15.5s infinite linear;
+        }
+
+        /* 3. 새벽카운터 전광판 */
+        .counter-box {
+            background: #000;
+            color: #fff;
+            padding: 30px;
+            margin: 20px;
+        }
+
+        #c-val {
+            font-size: 50pt;
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        /* 4. 본문 및 일기 구역 */
+        .content-zone {
+            padding: 40px;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 15pt;
+        }
+
+        .diary-box {
+            border-left: 15px solid #000;
+            padding-left: 30px;
+            margin-top: 50px;
+            font-style: italic;
+        }
     </style>
 </head>
-<body>
+<body onclick="control()">
 
-<div id="container">
-    <div id="preview">
-        <h1 style="margin:0 0 10px 0;">Youngs Books</h1>
-        <div id="status" class="status-tag">재생 중 (15.5초)</div>
-        
-        <div class="stage" id="main-stage" onclick="togglePlay()"><img src="1컷상하.jpg" class="holo-img active" id="i0" style="transition-duration: 5s;"><img src="1컷좌우.jpg" class="holo-img" id="i1" style="transition-duration: 5s;"><img src="2zjtwhdkn.jpg" class="holo-img" id="i2" style="transition-duration: 5s;"></div>
+    <h1 style="font-size: 40pt; margin: 40px 0;">Youngs Books</h1>
 
-        <div style="margin-top:10px; padding:10px; background:#000; color:#fff; text-align:center;">
-            <span id="counter" style="font-size:20pt; color:red; font-weight:bold;">91</span> 회 공유됨
-        </div>
+    <div class="stage" id="st">
+        <img src="1컷상하.jpg" class="holo-img active" id="i0">
+        <img src="1컷좌우.jpg" class="holo-img" id="i1">
+        <img src="2zjtwhdkn.jpg" class="holo-img" id="i2">
+        <img src="3tkd.jpg" class="holo-img" id="i3">
+    </div>
 
-        <div class="section">
-            <h3 style="margin:0;">💬 방명록</h3>
-            <div id="guest-list" style="height:120px; overflow-y:auto; font-size:11pt;">
-            <div class="guest-item">
-                <b>독자1</b>: 그림이 웅장합니다. 
-                <span class="admin-del" onclick="alert('삭제됨')">[삭제]</span>
-            </div>
-        
-            <div class="guest-item">
-                <b>광고</b>: 보이스피싱 조심하세요! 
-                <span class="admin-del" onclick="alert('삭제됨')">[삭제]</span>
-            </div>
-        </div>
+    <div class="counter-box">
+        <div id="c-val">91</div>
+        <p style="font-size: 18pt;">전 세계 지식 공유 횟수</p>
+    </div>
+
+    <div class="content-zone">
+        <p>지식은 멈추지 않고 흘러야 하며, 감동은 전달돼야 한다.</p>
+        <div class="diary-box">
+            오늘 드디어 한울림 성전의 문을 열었다. 91명의 동지들과 함께 시작하는 이 길은 결코 외롭지 않다.
         </div>
     </div>
 
-    <div id="admin">
-        <h2 style="margin:0;">⚙️ 홀로그램 제어실</h2>
-        
-        <label>🖼️ 1. 그림 리스트 (콤마로 구분)</label>
-        <textarea id="in-slides" rows="2">1컷상하.jpg, 1컷좌우.jpg, 2zjtwhdkn.jpg</textarea>
+    <script>
+        // 변수 설정
+        var cur = 0;
+        var len = 4; // 사진 4장
+        var play = true;
+        var itv;
 
-        <label>⏱️ 2. 전환 시간 (초)</label>
-        <input type="number" id="in-time" value="15.5" step="0.1">
-
-        <label>🎵 3. 음악 설정 (주소 및 볼륨)</label>
-        <input type="text" id="in-audio" value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
-        <input type="range" id="vol-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVol(this.value)">
-
-        <label>🔐 4. 관리자 비밀번호 (삭제 권한)</label>
-        <input type="password" id="admin-pw" placeholder="비밀번호 입력 시 삭제 버튼 활성화" oninput="checkPw(this.value)">
-
-        <button onclick="startEngine()" style="background:blue;">🚀 엔진 가동</button>
-        <button onclick="makeFinal()" style="background:#d00;">🎁 깃허브 코드 생성</button>
-        
-        <textarea id="final-code" rows="4" readonly="" style="margin-top:10px; font-size:9pt; background:#eee;"></textarea>
-    </div>
-</div>
-
-<script>
-    let images = []; let cur = 0; let isPlaying = true; let timer; let audio = new Audio();
-    let duration = 15.5;
-
-    function startEngine() {
-        images = document.getElementById('in-slides').value.split(',').map(s => s.trim()).filter(s => s !== "");
-        duration = parseFloat(document.getElementById('in-time').value) * 1000;
-        
-        // 음악 설정
-        audio.src = document.getElementById('in-audio').value;
-        audio.loop = true;
-        audio.play();
-
-        render();
-        runSlide();
-        alert("엔진 가동! 클릭 시 멈춤/재생 가능합니다.");
-    }
-
-    function render() {
-        const s = document.getElementById('main-stage'); s.innerHTML = '';
-        images.forEach((src, idx) => {
-            const img = document.createElement('img');
-            img.src = src; img.className = 'holo-img' + (idx === 0 ? ' active' : '');
-            img.style.transitionDuration = (duration/1000) + 's';
-            img.id = 'i' + idx; s.appendChild(img);
-        });
-    }
-
-    function runSlide() {
-        clearInterval(timer);
-        timer = setInterval(() => {
-            if(!isPlaying) return;
+        // 15.5초마다 그림 바꾸기 로직
+        function next() {
+            if(!play) return;
             document.getElementById('i' + cur).classList.remove('active');
-            cur = (cur + 1) % images.length;
+            cur = (cur + 1) % len;
             document.getElementById('i' + cur).classList.add('active');
-        }, duration);
-    }
-
-    function togglePlay() {
-        isPlaying = !isPlaying;
-        const status = document.getElementById('status');
-        if(isPlaying) {
-            status.innerText = "재생 중 (" + (duration/1000) + "초)";
-            status.style.background = "#d00";
-            audio.play();
-            runSlide();
-        } else {
-            status.innerText = "일시 정지 (관찰 중)";
-            status.style.background = "#555";
-            audio.pause();
-            clearInterval(timer);
         }
-    }
 
-    function updateVol(v) { audio.volume = v; }
+        // 엔진 가동
+        itv = setInterval(next, 15500);
 
-    function checkPw(pw) {
-        // 비밀번호가 '1234'일 경우 삭제 버튼 노출 (작가님이 수정 가능)
-        const btns = document.querySelectorAll('.admin-del');
-        btns.forEach(b => b.style.display = (pw === '1234') ? 'inline' : 'none');
-    }
+        // 클릭 시 일시정지/재생 (관찰 모드)
+        function control() {
+            play = !play;
+            if(play) {
+                itv = setInterval(next, 15500);
+                console.log("재생 시작");
+            } else {
+                clearInterval(itv);
+                console.log("일시 정지");
+            }
+        }
 
-    function makeFinal() {
-        document.getElementById('final-code').value = document.documentElement.outerHTML;
-        alert("최종 코드가 추출되었습니다!");
-    }
-
-    // 방명록 임시 데이터
-    const mockGuest = [{name:"독자1", msg:"그림이 웅장합니다."}, {name:"광고", msg:"보이스피싱 조심하세요!"}];
-    function loadGuest() {
-        const list = document.getElementById('guest-list');
-        list.innerHTML = mockGuest.map((g, i) => `
-            <div class="guest-item">
-                <b>${g.name}</b>: ${g.msg} 
-                <span class="admin-del" onclick="alert('삭제됨')">[삭제]</span>
-            </div>
-        `).join('');
-    }
-    loadGuest();
-</script>
-
-
-</body></html>
+        // 새벽카운터 실시간 동기화
+        window.onload = function() {
+            var url = "https://script.google.com/macros/s/AKfycbwa3mx4TsDDqJnr5S_jAAGEBOqaE7AqnytDvG_nQCDRF07sRQngpyOCmSNpBWJqEbyW/exec";
+            fetch(url + "?action=hit")
+                .then(r => r.json())
+                .then(d => {
+                    document.getElementById('c-val').innerText = d.count.toLocaleString();
+                });
+        }
+    </script>
+</body>
+</html>
